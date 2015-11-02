@@ -5,14 +5,16 @@
     <div class="jumbotron">
         <h1>Correlate</h1>
         <p class="lead">Unlocking the value within open data.</p>
-        <p><a href="http://www.asp.net" class="btn btn-primary btn-lg">Get Started! &raquo;</a></p>
+        <p><a href="Testing.aspx" class="btn btn-primary btn-lg">Get Started! &raquo;</a></p>
     </div>
 
     <div class="container-fluid">
+        <hr />
         <p>
             This application uses Government datasets, freely available the data.gov.uk website. Datasets on their own can be difficult to interpret and draw meaningful information from. 
             We provide a tool to visualise one or more datasets in a single graph, from which comparisons and interpretations can be made more easily.
         </p>
+        <hr />
     </div>
 
     <div class="row">

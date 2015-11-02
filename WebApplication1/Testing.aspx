@@ -7,9 +7,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">  
     <title></title>
+    <link href="Content/StylesCustom.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <form id="form1" runat="server">
+    
+<form id="form1" runat="server">
     <div>
         <h1>Welcome</h1>
         <table>
@@ -34,5 +36,9 @@
    </ChartAreas> 
 </asp:Chart>
     </form>
+
+        
 </body>
+
+    
 </html>
