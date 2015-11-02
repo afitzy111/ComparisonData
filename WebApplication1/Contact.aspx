@@ -2,11 +2,13 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <h2><%: Title %>.</h2>
-    <h3>Your contact page.</h3>
+    <h3>Neueda</h3>
     <address>
-        One Microsoft Way<br />
-        Redmond, WA 98052-6399<br />
-        <abbr title="Phone">P:</abbr>
+        20C Weaver's Court <br />
+        Linfield Road, Belfast
+        Northern Ireland
+        BT12 5GH<br />
+        <abbr title="Phone">+44(0)28 9099 2881</abbr>
         425.555.0100
     </address>
 
