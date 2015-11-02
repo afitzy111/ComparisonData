@@ -10,7 +10,7 @@
             <p class="lead">Unlocking the value within open data.</p>
             </div>
             <div class="col-md-4">
-            <img src="\images\opendata.jpg" alt="Open data keywords" width="400" class="img-responsive" />
+            <img src="\images\opendata.jpg" alt="Open data keywords" width="400" class="img-rounded" />
              </div>
             </div>
         <p><a href="About.aspx" class="btn btn-primary btn-lg">Get Started! &raquo;</a></p>
