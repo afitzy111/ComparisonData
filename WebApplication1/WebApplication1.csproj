@@ -202,6 +202,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Account\Web.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Images\data.jpg" />
+    <Content Include="Images\data2.jpg" />
     <Content Include="Images\Graph.png" />
     <Content Include="Images\opendata.jpg" />
     <Content Include="Images\tick.png" />
