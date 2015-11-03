@@ -4,7 +4,8 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <h1><%: Title %></h1>
     <hr />
-   <div>
+
+   <div class="container-fluid">
        <h3>Please select an option below.</h3>
        <hr/>
        <div class="btn-group">
@@ -20,15 +21,18 @@
                    <asp:Button ID="btnOutflow" type="button" class="btn-default" runat="server" Text="Outflow data for every year" OnClick="btn_click" />
                </li>
            </ul>
-            <button type="button" class="btn btn-primary">Farming Data</button>
+           </div>
+       <div class="btn-group">
+           <button type="button" class="btn btn-primary">Farming Data</button>
            <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                <span class="caret"></span>
                <span class="sr-only">Toggle Dropdown</span>
            </button>
            <ul class="dropdown-menu">
-               <li></li>        
-               <li></li>
+               <li>Option 1</li>        
+               <li>Option 2</li>
            </ul>
+           </div>
 
            <!--</div>
             <table>
@@ -51,4 +55,5 @@
                </ChartAreas>
            </asp:Chart>
        </div>
-</asp:Content>
+    </asp:Content>
+
