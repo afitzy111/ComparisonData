@@ -23,7 +23,7 @@
             </tr>
         </table>
     </div>
-        <asp:Label ID="Label1" runat="server"></asp:Label>
+        
         <asp:Chart ID="chtNBAChampionships" runat="server"> 
    <Series> 
       <asp:Series Name="Championships" YValueType="Int32" ChartType="Line" ChartArea="MainChartArea"> 
