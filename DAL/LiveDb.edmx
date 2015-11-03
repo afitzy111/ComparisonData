@@ -1,0 +1,783 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="LiveDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'LiveDB.dbo.ExportMilsTableLive' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ExportMilsTableLive">
+          <Key>
+            <PropertyRef Name="Trade_YEAR_ID" />
+          </Key>
+          <Property Name="Trade_YEAR_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Trade_Year" Type="int" />
+          <Property Name="EU_Total" Type="int" />
+          <Property Name="Asia_Oceania" Type="int" />
+          <Property Name="Eastern_Europe" Type="int" />
+          <Property Name="Latin_America" Type="int" />
+          <Property Name="Middle_East_N_Africa" Type="int" />
+          <Property Name="N_America" Type="int" />
+          <Property Name="Southern_Africa" Type="int" />
+          <Property Name="Western_Europe" Type="int" />
+          <Property Name="Non_EU_Eotal" Type="int" />
+          <Property Name="Grand_Total" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'LiveDB.dbo.FarmCurrentConsumptionLive' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="FarmCurrentConsumptionLive">
+          <Key>
+            <PropertyRef Name="Farm_Record_ID" />
+          </Key>
+          <Property Name="Farm_Record_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Farming_Year" Type="int" />
+          <Property Name="IC_Seeds" Type="int" />
+          <Property Name="IC_Energy" Type="int" />
+          <Property Name="IC_Electricity_and_Fuels_for_Heating" Type="int" />
+          <Property Name="IC_Motor_and_Machinery_Fuels" Type="int" />
+          <Property Name="IC_Fertilisers" Type="int" />
+          <Property Name="IC_Plant_Protection_Products" Type="int" />
+          <Property Name="IC_Veterinary_Expenses" Type="int" />
+          <Property Name="IC_Animal_Feed" Type="int" />
+          <Property Name="IC_Compounds" Type="int" />
+          <Property Name="IC_Straights" Type="int" />
+          <Property Name="IC_Feed_Produced_and_used_on_Farm_or_Purchased_from_other_farms" Type="int" />
+          <Property Name="IC_Total_Maintenance" Type="int" />
+          <Property Name="IC_Materials" Type="int" />
+          <Property Name="IC_Buildings" Type="int" />
+          <Property Name="IC_Agricultural_Services" Type="int" />
+          <Property Name="IC_FISIM" Type="int" />
+          <Property Name="IC_Other_Goods_and_Services" Type="int" />
+          <Property Name="IC_Total_Consumption_of_Fixed_Capital" Type="int" />
+          <Property Name="IC_Equipment" Type="int" />
+          <Property Name="IC_Buildings_Tax" Type="int" />
+          <Property Name="IC_Livestock" Type="int" />
+          <Property Name="IC_Cattle" Type="int" />
+          <Property Name="IC_Pigs" Type="int" />
+          <Property Name="IC_Sheep" Type="int" />
+          <Property Name="IC_Poultry" Type="int" />
+          <Property Name="IC_Other_Taxes_on_Production" Type="int" />
+          <Property Name="IC_Other_Subsidies_on_Production" Type="int" />
+          <Property Name="IC_Compensation_of_Employees" Type="int" />
+          <Property Name="IC_Rent" Type="int" />
+          <Property Name="IC_Interest" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'LiveDB.dbo.FarmCurrentProductionLive' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="FarmCurrentProductionLive">
+          <Key>
+            <PropertyRef Name="Farm_Record_ID" />
+          </Key>
+          <Property Name="Farm_Record_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Farming_Year" Type="int" />
+          <Property Name="Output_of_Cereals" Type="int" />
+          <Property Name="Wheat" Type="int" />
+          <Property Name="Barley" Type="int" />
+          <Property Name="Oats" Type="int" />
+          <Property Name="Output_of_Industrial_Crops" Type="int" />
+          <Property Name="Oilseed_Rape" Type="int" />
+          <Property Name="Protein_Crops" Type="int" />
+          <Property Name="Sugar_Beet" Type="int" />
+          <Property Name="Output_of_Forage_Plants" Type="int" />
+          <Property Name="Output_of_Vegetables_and_Horticultural" Type="int" />
+          <Property Name="Fresh_Vegetables" Type="int" />
+          <Property Name="Plants_and_Flowers" Type="int" />
+          <Property Name="Output_of_Potatoes" Type="int" />
+          <Property Name="Output_of_Fruit" Type="int" />
+          <Property Name="Output_of_Crop_Products" Type="int" />
+          <Property Name="Output_of_Livestock" Type="int" />
+          <Property Name="Primarily_for_meat" Type="int" />
+          <Property Name="Cattle" Type="int" />
+          <Property Name="Pigs" Type="int" />
+          <Property Name="Sheep" Type="int" />
+          <Property Name="Poultry" Type="int" />
+          <Property Name="Gross_Fixed_Captial_Formation" Type="int" />
+          <Property Name="Cattle2" Type="int" />
+          <Property Name="Pigs2" Type="int" />
+          <Property Name="Sheep2" Type="int" />
+          <Property Name="Poultry2" Type="int" />
+          <Property Name="Output_of_Livestock_Products" Type="int" />
+          <Property Name="Milk" Type="int" />
+          <Property Name="Eggs" Type="int" />
+          <Property Name="Other_Agricultural_Activities" Type="int" />
+          <Property Name="Inseperable_NonAgricultural_Activities" Type="int" />
+          <Property Name="Total_Subsidies_less_taxes" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'LiveDB.dbo.FarmRealConsumptionLive' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="FarmRealConsumptionLive">
+          <Key>
+            <PropertyRef Name="Farm_Record_ID" />
+          </Key>
+          <Property Name="Farm_Record_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Farming_Year" Type="int" />
+          <Property Name="IC_Seeds" Type="int" />
+          <Property Name="IC_Energy" Type="int" />
+          <Property Name="IC_Electricity_and_Fuels_for_Heating" Type="int" />
+          <Property Name="IC_Motor_and_Machinery_Fuels" Type="int" />
+          <Property Name="IC_Fertilisers" Type="int" />
+          <Property Name="IC_Plant_Protection_Products" Type="int" />
+          <Property Name="IC_Veterinary_Expenses" Type="int" />
+          <Property Name="IC_Animal_Feed" Type="int" />
+          <Property Name="IC_Compounds" Type="int" />
+          <Property Name="IC_Straights" Type="int" />
+          <Property Name="IC_Feed_Produced_and_used_on_Farm_or_Purchased_from_other_farms" Type="int" />
+          <Property Name="IC_Total_Maintenance" Type="int" />
+          <Property Name="IC_Materials" Type="int" />
+          <Property Name="IC_Buildings" Type="int" />
+          <Property Name="IC_Agricultural_Services" Type="int" />
+          <Property Name="IC_FISIM" Type="int" />
+          <Property Name="IC_Other_Goods_and_Services" Type="int" />
+          <Property Name="IC_Total_Consumption_of_Fixed_Capital" Type="int" />
+          <Property Name="IC_Equipment" Type="int" />
+          <Property Name="IC_Buildings_Tax" Type="int" />
+          <Property Name="IC_Livestock" Type="int" />
+          <Property Name="IC_Cattle" Type="int" />
+          <Property Name="IC_Pigs" Type="int" />
+          <Property Name="IC_Sheep" Type="int" />
+          <Property Name="IC_Poultry" Type="int" />
+          <Property Name="IC_Other_Taxes_on_Production" Type="int" />
+          <Property Name="IC_Other_Subsidies_on_Production" Type="int" />
+          <Property Name="IC_Compensation_of_Employees" Type="int" />
+          <Property Name="IC_Rent" Type="int" />
+          <Property Name="IC_Interest" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'LiveDB.dbo.FarmRealProductionLive' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="FarmRealProductionLive">
+          <Key>
+            <PropertyRef Name="Farm_Record_ID" />
+          </Key>
+          <Property Name="Farm_Record_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Farming_Year" Type="int" />
+          <Property Name="Output_of_Cereals" Type="int" />
+          <Property Name="Wheat" Type="int" />
+          <Property Name="Barley" Type="int" />
+          <Property Name="Oats" Type="int" />
+          <Property Name="Output_of_Industrial_Crops" Type="int" />
+          <Property Name="Oilseed_Rape" Type="int" />
+          <Property Name="Protein_Crops" Type="int" />
+          <Property Name="Sugar_Beet" Type="int" />
+          <Property Name="Output_of_Forage_Plants" Type="int" />
+          <Property Name="Output_of_Vegetables_and_Horticultural" Type="int" />
+          <Property Name="Fresh_Vegetables" Type="int" />
+          <Property Name="Plants_and_Flowers" Type="int" />
+          <Property Name="Output_of_Potatoes" Type="int" />
+          <Property Name="Output_of_Fruit" Type="int" />
+          <Property Name="Output_of_Crop_Products" Type="int" />
+          <Property Name="Output_of_Livestock" Type="int" />
+          <Property Name="Primarily_for_meat" Type="int" />
+          <Property Name="Cattle" Type="int" />
+          <Property Name="Pigs" Type="int" />
+          <Property Name="Sheep" Type="int" />
+          <Property Name="Poultry" Type="int" />
+          <Property Name="Gross_Fixed_Captial_Formation" Type="int" />
+          <Property Name="Cattle2" Type="int" />
+          <Property Name="Pigs2" Type="int" />
+          <Property Name="Sheep2" Type="int" />
+          <Property Name="Poultry2" Type="int" />
+          <Property Name="Output_of_Livestock_Products" Type="int" />
+          <Property Name="Milk" Type="int" />
+          <Property Name="Eggs" Type="int" />
+          <Property Name="Other_Agricultural_Activities" Type="int" />
+          <Property Name="Inseperable_NonAgricultural_Activities" Type="int" />
+          <Property Name="Total_Subsidies_less_taxes" Type="int" />
+          <Property Name="Total_Income" Type="int" />
+        </EntityType>
+        <EntityType Name="RainTableLive">
+          <Key>
+            <PropertyRef Name="Record_ID" />
+          </Key>
+          <Property Name="Record_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Year_Ref" Type="int" />
+          <Property Name="Rain_Full_Year" Type="int" />
+          <Property Name="Outflow_Full_Year" Type="int" />
+          <Property Name="Rain_Winter" Type="int" />
+          <Property Name="Outflow_Winter" Type="int" />
+          <Property Name="Rain_Summer" Type="int" />
+          <Property Name="Outflow_Summer" Type="int" />
+        </EntityType>
+        <EntityContainer Name="LiveDBModelStoreContainer">
+          <EntitySet Name="RainTableLive" EntityType="Self.RainTableLive" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExportMilsTableLive" EntityType="Self.ExportMilsTableLive" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ExportMilsTableLive].[Trade_YEAR_ID] AS [Trade_YEAR_ID], 
+    [ExportMilsTableLive].[Trade_Year] AS [Trade_Year], 
+    [ExportMilsTableLive].[EU_Total] AS [EU_Total], 
+    [ExportMilsTableLive].[Asia_Oceania] AS [Asia_Oceania], 
+    [ExportMilsTableLive].[Eastern_Europe] AS [Eastern_Europe], 
+    [ExportMilsTableLive].[Latin_America] AS [Latin_America], 
+    [ExportMilsTableLive].[Middle_East_N_Africa] AS [Middle_East_N_Africa], 
+    [ExportMilsTableLive].[N_America] AS [N_America], 
+    [ExportMilsTableLive].[Southern_Africa] AS [Southern_Africa], 
+    [ExportMilsTableLive].[Western_Europe] AS [Western_Europe], 
+    [ExportMilsTableLive].[Non_EU_Eotal] AS [Non_EU_Eotal], 
+    [ExportMilsTableLive].[Grand_Total] AS [Grand_Total]
+    FROM [dbo].[ExportMilsTableLive] AS [ExportMilsTableLive]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="FarmCurrentConsumptionLive" EntityType="Self.FarmCurrentConsumptionLive" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [FarmCurrentConsumptionLive].[Farm_Record_ID] AS [Farm_Record_ID], 
+    [FarmCurrentConsumptionLive].[Farming_Year] AS [Farming_Year], 
+    [FarmCurrentConsumptionLive].[IC_Seeds] AS [IC_Seeds], 
+    [FarmCurrentConsumptionLive].[IC_Energy] AS [IC_Energy], 
+    [FarmCurrentConsumptionLive].[IC_Electricity_and_Fuels_for_Heating] AS [IC_Electricity_and_Fuels_for_Heating], 
+    [FarmCurrentConsumptionLive].[IC_Motor_and_Machinery_Fuels] AS [IC_Motor_and_Machinery_Fuels], 
+    [FarmCurrentConsumptionLive].[IC_Fertilisers] AS [IC_Fertilisers], 
+    [FarmCurrentConsumptionLive].[IC_Plant_Protection_Products] AS [IC_Plant_Protection_Products], 
+    [FarmCurrentConsumptionLive].[IC_Veterinary_Expenses] AS [IC_Veterinary_Expenses], 
+    [FarmCurrentConsumptionLive].[IC_Animal_Feed] AS [IC_Animal_Feed], 
+    [FarmCurrentConsumptionLive].[IC_Compounds] AS [IC_Compounds], 
+    [FarmCurrentConsumptionLive].[IC_Straights] AS [IC_Straights], 
+    [FarmCurrentConsumptionLive].[IC_Feed_Produced_and_used_on_Farm_or_Purchased_from_other_farms] AS [IC_Feed_Produced_and_used_on_Farm_or_Purchased_from_other_farms], 
+    [FarmCurrentConsumptionLive].[IC_Total_Maintenance] AS [IC_Total_Maintenance], 
+    [FarmCurrentConsumptionLive].[IC_Materials] AS [IC_Materials], 
+    [FarmCurrentConsumptionLive].[IC_Buildings] AS [IC_Buildings], 
+    [FarmCurrentConsumptionLive].[IC_Agricultural_Services] AS [IC_Agricultural_Services], 
+    [FarmCurrentConsumptionLive].[IC_FISIM] AS [IC_FISIM], 
+    [FarmCurrentConsumptionLive].[IC_Other_Goods_and_Services] AS [IC_Other_Goods_and_Services], 
+    [FarmCurrentConsumptionLive].[IC_Total_Consumption_of_Fixed_Capital] AS [IC_Total_Consumption_of_Fixed_Capital], 
+    [FarmCurrentConsumptionLive].[IC_Equipment] AS [IC_Equipment], 
+    [FarmCurrentConsumptionLive].[IC_Buildings_Tax] AS [IC_Buildings_Tax], 
+    [FarmCurrentConsumptionLive].[IC_Livestock] AS [IC_Livestock], 
+    [FarmCurrentConsumptionLive].[IC_Cattle] AS [IC_Cattle], 
+    [FarmCurrentConsumptionLive].[IC_Pigs] AS [IC_Pigs], 
+    [FarmCurrentConsumptionLive].[IC_Sheep] AS [IC_Sheep], 
+    [FarmCurrentConsumptionLive].[IC_Poultry] AS [IC_Poultry], 
+    [FarmCurrentConsumptionLive].[IC_Other_Taxes_on_Production] AS [IC_Other_Taxes_on_Production], 
+    [FarmCurrentConsumptionLive].[IC_Other_Subsidies_on_Production] AS [IC_Other_Subsidies_on_Production], 
+    [FarmCurrentConsumptionLive].[IC_Compensation_of_Employees] AS [IC_Compensation_of_Employees], 
+    [FarmCurrentConsumptionLive].[IC_Rent] AS [IC_Rent], 
+    [FarmCurrentConsumptionLive].[IC_Interest] AS [IC_Interest]
+    FROM [dbo].[FarmCurrentConsumptionLive] AS [FarmCurrentConsumptionLive]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="FarmCurrentProductionLive" EntityType="Self.FarmCurrentProductionLive" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [FarmCurrentProductionLive].[Farm_Record_ID] AS [Farm_Record_ID], 
+    [FarmCurrentProductionLive].[Farming_Year] AS [Farming_Year], 
+    [FarmCurrentProductionLive].[Output_of_Cereals] AS [Output_of_Cereals], 
+    [FarmCurrentProductionLive].[Wheat] AS [Wheat], 
+    [FarmCurrentProductionLive].[Barley] AS [Barley], 
+    [FarmCurrentProductionLive].[Oats] AS [Oats], 
+    [FarmCurrentProductionLive].[Output_of_Industrial_Crops] AS [Output_of_Industrial_Crops], 
+    [FarmCurrentProductionLive].[Oilseed_Rape] AS [Oilseed_Rape], 
+    [FarmCurrentProductionLive].[Protein_Crops] AS [Protein_Crops], 
+    [FarmCurrentProductionLive].[Sugar_Beet] AS [Sugar_Beet], 
+    [FarmCurrentProductionLive].[Output_of_Forage_Plants] AS [Output_of_Forage_Plants], 
+    [FarmCurrentProductionLive].[Output_of_Vegetables_and_Horticultural] AS [Output_of_Vegetables_and_Horticultural], 
+    [FarmCurrentProductionLive].[Fresh_Vegetables] AS [Fresh_Vegetables], 
+    [FarmCurrentProductionLive].[Plants_and_Flowers] AS [Plants_and_Flowers], 
+    [FarmCurrentProductionLive].[Output_of_Potatoes] AS [Output_of_Potatoes], 
+    [FarmCurrentProductionLive].[Output_of_Fruit] AS [Output_of_Fruit], 
+    [FarmCurrentProductionLive].[Output_of_Crop_Products] AS [Output_of_Crop_Products], 
+    [FarmCurrentProductionLive].[Output_of_Livestock] AS [Output_of_Livestock], 
+    [FarmCurrentProductionLive].[Primarily_for_meat] AS [Primarily_for_meat], 
+    [FarmCurrentProductionLive].[Cattle] AS [Cattle], 
+    [FarmCurrentProductionLive].[Pigs] AS [Pigs], 
+    [FarmCurrentProductionLive].[Sheep] AS [Sheep], 
+    [FarmCurrentProductionLive].[Poultry] AS [Poultry], 
+    [FarmCurrentProductionLive].[Gross_Fixed_Captial_Formation] AS [Gross_Fixed_Captial_Formation], 
+    [FarmCurrentProductionLive].[Cattle2] AS [Cattle2], 
+    [FarmCurrentProductionLive].[Pigs2] AS [Pigs2], 
+    [FarmCurrentProductionLive].[Sheep2] AS [Sheep2], 
+    [FarmCurrentProductionLive].[Poultry2] AS [Poultry2], 
+    [FarmCurrentProductionLive].[Output_of_Livestock_Products] AS [Output_of_Livestock_Products], 
+    [FarmCurrentProductionLive].[Milk] AS [Milk], 
+    [FarmCurrentProductionLive].[Eggs] AS [Eggs], 
+    [FarmCurrentProductionLive].[Other_Agricultural_Activities] AS [Other_Agricultural_Activities], 
+    [FarmCurrentProductionLive].[Inseperable_NonAgricultural_Activities] AS [Inseperable_NonAgricultural_Activities], 
+    [FarmCurrentProductionLive].[Total_Subsidies_less_taxes] AS [Total_Subsidies_less_taxes]
+    FROM [dbo].[FarmCurrentProductionLive] AS [FarmCurrentProductionLive]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="FarmRealConsumptionLive" EntityType="Self.FarmRealConsumptionLive" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [FarmRealConsumptionLive].[Farm_Record_ID] AS [Farm_Record_ID], 
+    [FarmRealConsumptionLive].[Farming_Year] AS [Farming_Year], 
+    [FarmRealConsumptionLive].[IC_Seeds] AS [IC_Seeds], 
+    [FarmRealConsumptionLive].[IC_Energy] AS [IC_Energy], 
+    [FarmRealConsumptionLive].[IC_Electricity_and_Fuels_for_Heating] AS [IC_Electricity_and_Fuels_for_Heating], 
+    [FarmRealConsumptionLive].[IC_Motor_and_Machinery_Fuels] AS [IC_Motor_and_Machinery_Fuels], 
+    [FarmRealConsumptionLive].[IC_Fertilisers] AS [IC_Fertilisers], 
+    [FarmRealConsumptionLive].[IC_Plant_Protection_Products] AS [IC_Plant_Protection_Products], 
+    [FarmRealConsumptionLive].[IC_Veterinary_Expenses] AS [IC_Veterinary_Expenses], 
+    [FarmRealConsumptionLive].[IC_Animal_Feed] AS [IC_Animal_Feed], 
+    [FarmRealConsumptionLive].[IC_Compounds] AS [IC_Compounds], 
+    [FarmRealConsumptionLive].[IC_Straights] AS [IC_Straights], 
+    [FarmRealConsumptionLive].[IC_Feed_Produced_and_used_on_Farm_or_Purchased_from_other_farms] AS [IC_Feed_Produced_and_used_on_Farm_or_Purchased_from_other_farms], 
+    [FarmRealConsumptionLive].[IC_Total_Maintenance] AS [IC_Total_Maintenance], 
+    [FarmRealConsumptionLive].[IC_Materials] AS [IC_Materials], 
+    [FarmRealConsumptionLive].[IC_Buildings] AS [IC_Buildings], 
+    [FarmRealConsumptionLive].[IC_Agricultural_Services] AS [IC_Agricultural_Services], 
+    [FarmRealConsumptionLive].[IC_FISIM] AS [IC_FISIM], 
+    [FarmRealConsumptionLive].[IC_Other_Goods_and_Services] AS [IC_Other_Goods_and_Services], 
+    [FarmRealConsumptionLive].[IC_Total_Consumption_of_Fixed_Capital] AS [IC_Total_Consumption_of_Fixed_Capital], 
+    [FarmRealConsumptionLive].[IC_Equipment] AS [IC_Equipment], 
+    [FarmRealConsumptionLive].[IC_Buildings_Tax] AS [IC_Buildings_Tax], 
+    [FarmRealConsumptionLive].[IC_Livestock] AS [IC_Livestock], 
+    [FarmRealConsumptionLive].[IC_Cattle] AS [IC_Cattle], 
+    [FarmRealConsumptionLive].[IC_Pigs] AS [IC_Pigs], 
+    [FarmRealConsumptionLive].[IC_Sheep] AS [IC_Sheep], 
+    [FarmRealConsumptionLive].[IC_Poultry] AS [IC_Poultry], 
+    [FarmRealConsumptionLive].[IC_Other_Taxes_on_Production] AS [IC_Other_Taxes_on_Production], 
+    [FarmRealConsumptionLive].[IC_Other_Subsidies_on_Production] AS [IC_Other_Subsidies_on_Production], 
+    [FarmRealConsumptionLive].[IC_Compensation_of_Employees] AS [IC_Compensation_of_Employees], 
+    [FarmRealConsumptionLive].[IC_Rent] AS [IC_Rent], 
+    [FarmRealConsumptionLive].[IC_Interest] AS [IC_Interest]
+    FROM [dbo].[FarmRealConsumptionLive] AS [FarmRealConsumptionLive]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="FarmRealProductionLive" EntityType="Self.FarmRealProductionLive" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [FarmRealProductionLive].[Farm_Record_ID] AS [Farm_Record_ID], 
+    [FarmRealProductionLive].[Farming_Year] AS [Farming_Year], 
+    [FarmRealProductionLive].[Output_of_Cereals] AS [Output_of_Cereals], 
+    [FarmRealProductionLive].[Wheat] AS [Wheat], 
+    [FarmRealProductionLive].[Barley] AS [Barley], 
+    [FarmRealProductionLive].[Oats] AS [Oats], 
+    [FarmRealProductionLive].[Output_of_Industrial_Crops] AS [Output_of_Industrial_Crops], 
+    [FarmRealProductionLive].[Oilseed_Rape] AS [Oilseed_Rape], 
+    [FarmRealProductionLive].[Protein_Crops] AS [Protein_Crops], 
+    [FarmRealProductionLive].[Sugar_Beet] AS [Sugar_Beet], 
+    [FarmRealProductionLive].[Output_of_Forage_Plants] AS [Output_of_Forage_Plants], 
+    [FarmRealProductionLive].[Output_of_Vegetables_and_Horticultural] AS [Output_of_Vegetables_and_Horticultural], 
+    [FarmRealProductionLive].[Fresh_Vegetables] AS [Fresh_Vegetables], 
+    [FarmRealProductionLive].[Plants_and_Flowers] AS [Plants_and_Flowers], 
+    [FarmRealProductionLive].[Output_of_Potatoes] AS [Output_of_Potatoes], 
+    [FarmRealProductionLive].[Output_of_Fruit] AS [Output_of_Fruit], 
+    [FarmRealProductionLive].[Output_of_Crop_Products] AS [Output_of_Crop_Products], 
+    [FarmRealProductionLive].[Output_of_Livestock] AS [Output_of_Livestock], 
+    [FarmRealProductionLive].[Primarily_for_meat] AS [Primarily_for_meat], 
+    [FarmRealProductionLive].[Cattle] AS [Cattle], 
+    [FarmRealProductionLive].[Pigs] AS [Pigs], 
+    [FarmRealProductionLive].[Sheep] AS [Sheep], 
+    [FarmRealProductionLive].[Poultry] AS [Poultry], 
+    [FarmRealProductionLive].[Gross_Fixed_Captial_Formation] AS [Gross_Fixed_Captial_Formation], 
+    [FarmRealProductionLive].[Cattle2] AS [Cattle2], 
+    [FarmRealProductionLive].[Pigs2] AS [Pigs2], 
+    [FarmRealProductionLive].[Sheep2] AS [Sheep2], 
+    [FarmRealProductionLive].[Poultry2] AS [Poultry2], 
+    [FarmRealProductionLive].[Output_of_Livestock_Products] AS [Output_of_Livestock_Products], 
+    [FarmRealProductionLive].[Milk] AS [Milk], 
+    [FarmRealProductionLive].[Eggs] AS [Eggs], 
+    [FarmRealProductionLive].[Other_Agricultural_Activities] AS [Other_Agricultural_Activities], 
+    [FarmRealProductionLive].[Inseperable_NonAgricultural_Activities] AS [Inseperable_NonAgricultural_Activities], 
+    [FarmRealProductionLive].[Total_Subsidies_less_taxes] AS [Total_Subsidies_less_taxes], 
+    [FarmRealProductionLive].[Total_Income] AS [Total_Income]
+    FROM [dbo].[FarmRealProductionLive] AS [FarmRealProductionLive]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LiveDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="RainTableLive">
+          <Key>
+            <PropertyRef Name="Record_ID" />
+          </Key>
+          <Property Name="Record_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Year_Ref" Type="Int32" />
+          <Property Name="Rain_Full_Year" Type="Int32" />
+          <Property Name="Outflow_Full_Year" Type="Int32" />
+          <Property Name="Rain_Winter" Type="Int32" />
+          <Property Name="Outflow_Winter" Type="Int32" />
+          <Property Name="Rain_Summer" Type="Int32" />
+          <Property Name="Outflow_Summer" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ExportMilsTableLive">
+          <Key>
+            <PropertyRef Name="Trade_YEAR_ID" />
+          </Key>
+          <Property Name="Trade_YEAR_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Trade_Year" Type="Int32" />
+          <Property Name="EU_Total" Type="Int32" />
+          <Property Name="Asia_Oceania" Type="Int32" />
+          <Property Name="Eastern_Europe" Type="Int32" />
+          <Property Name="Latin_America" Type="Int32" />
+          <Property Name="Middle_East_N_Africa" Type="Int32" />
+          <Property Name="N_America" Type="Int32" />
+          <Property Name="Southern_Africa" Type="Int32" />
+          <Property Name="Western_Europe" Type="Int32" />
+          <Property Name="Non_EU_Eotal" Type="Int32" />
+          <Property Name="Grand_Total" Type="Int32" />
+        </EntityType>
+        <EntityType Name="FarmCurrentConsumptionLive">
+          <Key>
+            <PropertyRef Name="Farm_Record_ID" />
+          </Key>
+          <Property Name="Farm_Record_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Farming_Year" Type="Int32" />
+          <Property Name="IC_Seeds" Type="Int32" />
+          <Property Name="IC_Energy" Type="Int32" />
+          <Property Name="IC_Electricity_and_Fuels_for_Heating" Type="Int32" />
+          <Property Name="IC_Motor_and_Machinery_Fuels" Type="Int32" />
+          <Property Name="IC_Fertilisers" Type="Int32" />
+          <Property Name="IC_Plant_Protection_Products" Type="Int32" />
+          <Property Name="IC_Veterinary_Expenses" Type="Int32" />
+          <Property Name="IC_Animal_Feed" Type="Int32" />
+          <Property Name="IC_Compounds" Type="Int32" />
+          <Property Name="IC_Straights" Type="Int32" />
+          <Property Name="IC_Feed_Produced_and_used_on_Farm_or_Purchased_from_other_farms" Type="Int32" />
+          <Property Name="IC_Total_Maintenance" Type="Int32" />
+          <Property Name="IC_Materials" Type="Int32" />
+          <Property Name="IC_Buildings" Type="Int32" />
+          <Property Name="IC_Agricultural_Services" Type="Int32" />
+          <Property Name="IC_FISIM" Type="Int32" />
+          <Property Name="IC_Other_Goods_and_Services" Type="Int32" />
+          <Property Name="IC_Total_Consumption_of_Fixed_Capital" Type="Int32" />
+          <Property Name="IC_Equipment" Type="Int32" />
+          <Property Name="IC_Buildings_Tax" Type="Int32" />
+          <Property Name="IC_Livestock" Type="Int32" />
+          <Property Name="IC_Cattle" Type="Int32" />
+          <Property Name="IC_Pigs" Type="Int32" />
+          <Property Name="IC_Sheep" Type="Int32" />
+          <Property Name="IC_Poultry" Type="Int32" />
+          <Property Name="IC_Other_Taxes_on_Production" Type="Int32" />
+          <Property Name="IC_Other_Subsidies_on_Production" Type="Int32" />
+          <Property Name="IC_Compensation_of_Employees" Type="Int32" />
+          <Property Name="IC_Rent" Type="Int32" />
+          <Property Name="IC_Interest" Type="Int32" />
+        </EntityType>
+        <EntityType Name="FarmCurrentProductionLive">
+          <Key>
+            <PropertyRef Name="Farm_Record_ID" />
+          </Key>
+          <Property Name="Farm_Record_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Farming_Year" Type="Int32" />
+          <Property Name="Output_of_Cereals" Type="Int32" />
+          <Property Name="Wheat" Type="Int32" />
+          <Property Name="Barley" Type="Int32" />
+          <Property Name="Oats" Type="Int32" />
+          <Property Name="Output_of_Industrial_Crops" Type="Int32" />
+          <Property Name="Oilseed_Rape" Type="Int32" />
+          <Property Name="Protein_Crops" Type="Int32" />
+          <Property Name="Sugar_Beet" Type="Int32" />
+          <Property Name="Output_of_Forage_Plants" Type="Int32" />
+          <Property Name="Output_of_Vegetables_and_Horticultural" Type="Int32" />
+          <Property Name="Fresh_Vegetables" Type="Int32" />
+          <Property Name="Plants_and_Flowers" Type="Int32" />
+          <Property Name="Output_of_Potatoes" Type="Int32" />
+          <Property Name="Output_of_Fruit" Type="Int32" />
+          <Property Name="Output_of_Crop_Products" Type="Int32" />
+          <Property Name="Output_of_Livestock" Type="Int32" />
+          <Property Name="Primarily_for_meat" Type="Int32" />
+          <Property Name="Cattle" Type="Int32" />
+          <Property Name="Pigs" Type="Int32" />
+          <Property Name="Sheep" Type="Int32" />
+          <Property Name="Poultry" Type="Int32" />
+          <Property Name="Gross_Fixed_Captial_Formation" Type="Int32" />
+          <Property Name="Cattle2" Type="Int32" />
+          <Property Name="Pigs2" Type="Int32" />
+          <Property Name="Sheep2" Type="Int32" />
+          <Property Name="Poultry2" Type="Int32" />
+          <Property Name="Output_of_Livestock_Products" Type="Int32" />
+          <Property Name="Milk" Type="Int32" />
+          <Property Name="Eggs" Type="Int32" />
+          <Property Name="Other_Agricultural_Activities" Type="Int32" />
+          <Property Name="Inseperable_NonAgricultural_Activities" Type="Int32" />
+          <Property Name="Total_Subsidies_less_taxes" Type="Int32" />
+        </EntityType>
+        <EntityType Name="FarmRealConsumptionLive">
+          <Key>
+            <PropertyRef Name="Farm_Record_ID" />
+          </Key>
+          <Property Name="Farm_Record_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Farming_Year" Type="Int32" />
+          <Property Name="IC_Seeds" Type="Int32" />
+          <Property Name="IC_Energy" Type="Int32" />
+          <Property Name="IC_Electricity_and_Fuels_for_Heating" Type="Int32" />
+          <Property Name="IC_Motor_and_Machinery_Fuels" Type="Int32" />
+          <Property Name="IC_Fertilisers" Type="Int32" />
+          <Property Name="IC_Plant_Protection_Products" Type="Int32" />
+          <Property Name="IC_Veterinary_Expenses" Type="Int32" />
+          <Property Name="IC_Animal_Feed" Type="Int32" />
+          <Property Name="IC_Compounds" Type="Int32" />
+          <Property Name="IC_Straights" Type="Int32" />
+          <Property Name="IC_Feed_Produced_and_used_on_Farm_or_Purchased_from_other_farms" Type="Int32" />
+          <Property Name="IC_Total_Maintenance" Type="Int32" />
+          <Property Name="IC_Materials" Type="Int32" />
+          <Property Name="IC_Buildings" Type="Int32" />
+          <Property Name="IC_Agricultural_Services" Type="Int32" />
+          <Property Name="IC_FISIM" Type="Int32" />
+          <Property Name="IC_Other_Goods_and_Services" Type="Int32" />
+          <Property Name="IC_Total_Consumption_of_Fixed_Capital" Type="Int32" />
+          <Property Name="IC_Equipment" Type="Int32" />
+          <Property Name="IC_Buildings_Tax" Type="Int32" />
+          <Property Name="IC_Livestock" Type="Int32" />
+          <Property Name="IC_Cattle" Type="Int32" />
+          <Property Name="IC_Pigs" Type="Int32" />
+          <Property Name="IC_Sheep" Type="Int32" />
+          <Property Name="IC_Poultry" Type="Int32" />
+          <Property Name="IC_Other_Taxes_on_Production" Type="Int32" />
+          <Property Name="IC_Other_Subsidies_on_Production" Type="Int32" />
+          <Property Name="IC_Compensation_of_Employees" Type="Int32" />
+          <Property Name="IC_Rent" Type="Int32" />
+          <Property Name="IC_Interest" Type="Int32" />
+        </EntityType>
+        <EntityType Name="FarmRealProductionLive">
+          <Key>
+            <PropertyRef Name="Farm_Record_ID" />
+          </Key>
+          <Property Name="Farm_Record_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Farming_Year" Type="Int32" />
+          <Property Name="Output_of_Cereals" Type="Int32" />
+          <Property Name="Wheat" Type="Int32" />
+          <Property Name="Barley" Type="Int32" />
+          <Property Name="Oats" Type="Int32" />
+          <Property Name="Output_of_Industrial_Crops" Type="Int32" />
+          <Property Name="Oilseed_Rape" Type="Int32" />
+          <Property Name="Protein_Crops" Type="Int32" />
+          <Property Name="Sugar_Beet" Type="Int32" />
+          <Property Name="Output_of_Forage_Plants" Type="Int32" />
+          <Property Name="Output_of_Vegetables_and_Horticultural" Type="Int32" />
+          <Property Name="Fresh_Vegetables" Type="Int32" />
+          <Property Name="Plants_and_Flowers" Type="Int32" />
+          <Property Name="Output_of_Potatoes" Type="Int32" />
+          <Property Name="Output_of_Fruit" Type="Int32" />
+          <Property Name="Output_of_Crop_Products" Type="Int32" />
+          <Property Name="Output_of_Livestock" Type="Int32" />
+          <Property Name="Primarily_for_meat" Type="Int32" />
+          <Property Name="Cattle" Type="Int32" />
+          <Property Name="Pigs" Type="Int32" />
+          <Property Name="Sheep" Type="Int32" />
+          <Property Name="Poultry" Type="Int32" />
+          <Property Name="Gross_Fixed_Captial_Formation" Type="Int32" />
+          <Property Name="Cattle2" Type="Int32" />
+          <Property Name="Pigs2" Type="Int32" />
+          <Property Name="Sheep2" Type="Int32" />
+          <Property Name="Poultry2" Type="Int32" />
+          <Property Name="Output_of_Livestock_Products" Type="Int32" />
+          <Property Name="Milk" Type="Int32" />
+          <Property Name="Eggs" Type="Int32" />
+          <Property Name="Other_Agricultural_Activities" Type="Int32" />
+          <Property Name="Inseperable_NonAgricultural_Activities" Type="Int32" />
+          <Property Name="Total_Subsidies_less_taxes" Type="Int32" />
+          <Property Name="Total_Income" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="LiveDBEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="RainTableLive" EntityType="Self.RainTableLive" />
+          <EntitySet Name="ExportMilsTableLive" EntityType="Self.ExportMilsTableLive" />
+          <EntitySet Name="FarmCurrentConsumptionLive" EntityType="Self.FarmCurrentConsumptionLive" />
+          <EntitySet Name="FarmCurrentProductionLive" EntityType="Self.FarmCurrentProductionLive" />
+          <EntitySet Name="FarmRealConsumptionLive" EntityType="Self.FarmRealConsumptionLive" />
+          <EntitySet Name="FarmRealProductionLive" EntityType="Self.FarmRealProductionLive" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LiveDBModelStoreContainer" CdmEntityContainer="LiveDBEntities1">
+          <EntitySetMapping Name="RainTableLive">
+            <EntityTypeMapping TypeName="LiveDBModel.RainTableLive">
+              <MappingFragment StoreEntitySet="RainTableLive">
+                <ScalarProperty Name="Record_ID" ColumnName="Record_ID" />
+                <ScalarProperty Name="Year_Ref" ColumnName="Year_Ref" />
+                <ScalarProperty Name="Rain_Full_Year" ColumnName="Rain_Full_Year" />
+                <ScalarProperty Name="Outflow_Full_Year" ColumnName="Outflow_Full_Year" />
+                <ScalarProperty Name="Rain_Winter" ColumnName="Rain_Winter" />
+                <ScalarProperty Name="Outflow_Winter" ColumnName="Outflow_Winter" />
+                <ScalarProperty Name="Rain_Summer" ColumnName="Rain_Summer" />
+                <ScalarProperty Name="Outflow_Summer" ColumnName="Outflow_Summer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExportMilsTableLive">
+            <EntityTypeMapping TypeName="LiveDBModel.ExportMilsTableLive">
+              <MappingFragment StoreEntitySet="ExportMilsTableLive">
+                <ScalarProperty Name="Trade_YEAR_ID" ColumnName="Trade_YEAR_ID" />
+                <ScalarProperty Name="Trade_Year" ColumnName="Trade_Year" />
+                <ScalarProperty Name="EU_Total" ColumnName="EU_Total" />
+                <ScalarProperty Name="Asia_Oceania" ColumnName="Asia_Oceania" />
+                <ScalarProperty Name="Eastern_Europe" ColumnName="Eastern_Europe" />
+                <ScalarProperty Name="Latin_America" ColumnName="Latin_America" />
+                <ScalarProperty Name="Middle_East_N_Africa" ColumnName="Middle_East_N_Africa" />
+                <ScalarProperty Name="N_America" ColumnName="N_America" />
+                <ScalarProperty Name="Southern_Africa" ColumnName="Southern_Africa" />
+                <ScalarProperty Name="Western_Europe" ColumnName="Western_Europe" />
+                <ScalarProperty Name="Non_EU_Eotal" ColumnName="Non_EU_Eotal" />
+                <ScalarProperty Name="Grand_Total" ColumnName="Grand_Total" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FarmCurrentConsumptionLive">
+            <EntityTypeMapping TypeName="LiveDBModel.FarmCurrentConsumptionLive">
+              <MappingFragment StoreEntitySet="FarmCurrentConsumptionLive">
+                <ScalarProperty Name="Farm_Record_ID" ColumnName="Farm_Record_ID" />
+                <ScalarProperty Name="Farming_Year" ColumnName="Farming_Year" />
+                <ScalarProperty Name="IC_Seeds" ColumnName="IC_Seeds" />
+                <ScalarProperty Name="IC_Energy" ColumnName="IC_Energy" />
+                <ScalarProperty Name="IC_Electricity_and_Fuels_for_Heating" ColumnName="IC_Electricity_and_Fuels_for_Heating" />
+                <ScalarProperty Name="IC_Motor_and_Machinery_Fuels" ColumnName="IC_Motor_and_Machinery_Fuels" />
+                <ScalarProperty Name="IC_Fertilisers" ColumnName="IC_Fertilisers" />
+                <ScalarProperty Name="IC_Plant_Protection_Products" ColumnName="IC_Plant_Protection_Products" />
+                <ScalarProperty Name="IC_Veterinary_Expenses" ColumnName="IC_Veterinary_Expenses" />
+                <ScalarProperty Name="IC_Animal_Feed" ColumnName="IC_Animal_Feed" />
+                <ScalarProperty Name="IC_Compounds" ColumnName="IC_Compounds" />
+                <ScalarProperty Name="IC_Straights" ColumnName="IC_Straights" />
+                <ScalarProperty Name="IC_Feed_Produced_and_used_on_Farm_or_Purchased_from_other_farms" ColumnName="IC_Feed_Produced_and_used_on_Farm_or_Purchased_from_other_farms" />
+                <ScalarProperty Name="IC_Total_Maintenance" ColumnName="IC_Total_Maintenance" />
+                <ScalarProperty Name="IC_Materials" ColumnName="IC_Materials" />
+                <ScalarProperty Name="IC_Buildings" ColumnName="IC_Buildings" />
+                <ScalarProperty Name="IC_Agricultural_Services" ColumnName="IC_Agricultural_Services" />
+                <ScalarProperty Name="IC_FISIM" ColumnName="IC_FISIM" />
+                <ScalarProperty Name="IC_Other_Goods_and_Services" ColumnName="IC_Other_Goods_and_Services" />
+                <ScalarProperty Name="IC_Total_Consumption_of_Fixed_Capital" ColumnName="IC_Total_Consumption_of_Fixed_Capital" />
+                <ScalarProperty Name="IC_Equipment" ColumnName="IC_Equipment" />
+                <ScalarProperty Name="IC_Buildings_Tax" ColumnName="IC_Buildings_Tax" />
+                <ScalarProperty Name="IC_Livestock" ColumnName="IC_Livestock" />
+                <ScalarProperty Name="IC_Cattle" ColumnName="IC_Cattle" />
+                <ScalarProperty Name="IC_Pigs" ColumnName="IC_Pigs" />
+                <ScalarProperty Name="IC_Sheep" ColumnName="IC_Sheep" />
+                <ScalarProperty Name="IC_Poultry" ColumnName="IC_Poultry" />
+                <ScalarProperty Name="IC_Other_Taxes_on_Production" ColumnName="IC_Other_Taxes_on_Production" />
+                <ScalarProperty Name="IC_Other_Subsidies_on_Production" ColumnName="IC_Other_Subsidies_on_Production" />
+                <ScalarProperty Name="IC_Compensation_of_Employees" ColumnName="IC_Compensation_of_Employees" />
+                <ScalarProperty Name="IC_Rent" ColumnName="IC_Rent" />
+                <ScalarProperty Name="IC_Interest" ColumnName="IC_Interest" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FarmCurrentProductionLive">
+            <EntityTypeMapping TypeName="LiveDBModel.FarmCurrentProductionLive">
+              <MappingFragment StoreEntitySet="FarmCurrentProductionLive">
+                <ScalarProperty Name="Farm_Record_ID" ColumnName="Farm_Record_ID" />
+                <ScalarProperty Name="Farming_Year" ColumnName="Farming_Year" />
+                <ScalarProperty Name="Output_of_Cereals" ColumnName="Output_of_Cereals" />
+                <ScalarProperty Name="Wheat" ColumnName="Wheat" />
+                <ScalarProperty Name="Barley" ColumnName="Barley" />
+                <ScalarProperty Name="Oats" ColumnName="Oats" />
+                <ScalarProperty Name="Output_of_Industrial_Crops" ColumnName="Output_of_Industrial_Crops" />
+                <ScalarProperty Name="Oilseed_Rape" ColumnName="Oilseed_Rape" />
+                <ScalarProperty Name="Protein_Crops" ColumnName="Protein_Crops" />
+                <ScalarProperty Name="Sugar_Beet" ColumnName="Sugar_Beet" />
+                <ScalarProperty Name="Output_of_Forage_Plants" ColumnName="Output_of_Forage_Plants" />
+                <ScalarProperty Name="Output_of_Vegetables_and_Horticultural" ColumnName="Output_of_Vegetables_and_Horticultural" />
+                <ScalarProperty Name="Fresh_Vegetables" ColumnName="Fresh_Vegetables" />
+                <ScalarProperty Name="Plants_and_Flowers" ColumnName="Plants_and_Flowers" />
+                <ScalarProperty Name="Output_of_Potatoes" ColumnName="Output_of_Potatoes" />
+                <ScalarProperty Name="Output_of_Fruit" ColumnName="Output_of_Fruit" />
+                <ScalarProperty Name="Output_of_Crop_Products" ColumnName="Output_of_Crop_Products" />
+                <ScalarProperty Name="Output_of_Livestock" ColumnName="Output_of_Livestock" />
+                <ScalarProperty Name="Primarily_for_meat" ColumnName="Primarily_for_meat" />
+                <ScalarProperty Name="Cattle" ColumnName="Cattle" />
+                <ScalarProperty Name="Pigs" ColumnName="Pigs" />
+                <ScalarProperty Name="Sheep" ColumnName="Sheep" />
+                <ScalarProperty Name="Poultry" ColumnName="Poultry" />
+                <ScalarProperty Name="Gross_Fixed_Captial_Formation" ColumnName="Gross_Fixed_Captial_Formation" />
+                <ScalarProperty Name="Cattle2" ColumnName="Cattle2" />
+                <ScalarProperty Name="Pigs2" ColumnName="Pigs2" />
+                <ScalarProperty Name="Sheep2" ColumnName="Sheep2" />
+                <ScalarProperty Name="Poultry2" ColumnName="Poultry2" />
+                <ScalarProperty Name="Output_of_Livestock_Products" ColumnName="Output_of_Livestock_Products" />
+                <ScalarProperty Name="Milk" ColumnName="Milk" />
+                <ScalarProperty Name="Eggs" ColumnName="Eggs" />
+                <ScalarProperty Name="Other_Agricultural_Activities" ColumnName="Other_Agricultural_Activities" />
+                <ScalarProperty Name="Inseperable_NonAgricultural_Activities" ColumnName="Inseperable_NonAgricultural_Activities" />
+                <ScalarProperty Name="Total_Subsidies_less_taxes" ColumnName="Total_Subsidies_less_taxes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FarmRealConsumptionLive">
+            <EntityTypeMapping TypeName="LiveDBModel.FarmRealConsumptionLive">
+              <MappingFragment StoreEntitySet="FarmRealConsumptionLive">
+                <ScalarProperty Name="Farm_Record_ID" ColumnName="Farm_Record_ID" />
+                <ScalarProperty Name="Farming_Year" ColumnName="Farming_Year" />
+                <ScalarProperty Name="IC_Seeds" ColumnName="IC_Seeds" />
+                <ScalarProperty Name="IC_Energy" ColumnName="IC_Energy" />
+                <ScalarProperty Name="IC_Electricity_and_Fuels_for_Heating" ColumnName="IC_Electricity_and_Fuels_for_Heating" />
+                <ScalarProperty Name="IC_Motor_and_Machinery_Fuels" ColumnName="IC_Motor_and_Machinery_Fuels" />
+                <ScalarProperty Name="IC_Fertilisers" ColumnName="IC_Fertilisers" />
+                <ScalarProperty Name="IC_Plant_Protection_Products" ColumnName="IC_Plant_Protection_Products" />
+                <ScalarProperty Name="IC_Veterinary_Expenses" ColumnName="IC_Veterinary_Expenses" />
+                <ScalarProperty Name="IC_Animal_Feed" ColumnName="IC_Animal_Feed" />
+                <ScalarProperty Name="IC_Compounds" ColumnName="IC_Compounds" />
+                <ScalarProperty Name="IC_Straights" ColumnName="IC_Straights" />
+                <ScalarProperty Name="IC_Feed_Produced_and_used_on_Farm_or_Purchased_from_other_farms" ColumnName="IC_Feed_Produced_and_used_on_Farm_or_Purchased_from_other_farms" />
+                <ScalarProperty Name="IC_Total_Maintenance" ColumnName="IC_Total_Maintenance" />
+                <ScalarProperty Name="IC_Materials" ColumnName="IC_Materials" />
+                <ScalarProperty Name="IC_Buildings" ColumnName="IC_Buildings" />
+                <ScalarProperty Name="IC_Agricultural_Services" ColumnName="IC_Agricultural_Services" />
+                <ScalarProperty Name="IC_FISIM" ColumnName="IC_FISIM" />
+                <ScalarProperty Name="IC_Other_Goods_and_Services" ColumnName="IC_Other_Goods_and_Services" />
+                <ScalarProperty Name="IC_Total_Consumption_of_Fixed_Capital" ColumnName="IC_Total_Consumption_of_Fixed_Capital" />
+                <ScalarProperty Name="IC_Equipment" ColumnName="IC_Equipment" />
+                <ScalarProperty Name="IC_Buildings_Tax" ColumnName="IC_Buildings_Tax" />
+                <ScalarProperty Name="IC_Livestock" ColumnName="IC_Livestock" />
+                <ScalarProperty Name="IC_Cattle" ColumnName="IC_Cattle" />
+                <ScalarProperty Name="IC_Pigs" ColumnName="IC_Pigs" />
+                <ScalarProperty Name="IC_Sheep" ColumnName="IC_Sheep" />
+                <ScalarProperty Name="IC_Poultry" ColumnName="IC_Poultry" />
+                <ScalarProperty Name="IC_Other_Taxes_on_Production" ColumnName="IC_Other_Taxes_on_Production" />
+                <ScalarProperty Name="IC_Other_Subsidies_on_Production" ColumnName="IC_Other_Subsidies_on_Production" />
+                <ScalarProperty Name="IC_Compensation_of_Employees" ColumnName="IC_Compensation_of_Employees" />
+                <ScalarProperty Name="IC_Rent" ColumnName="IC_Rent" />
+                <ScalarProperty Name="IC_Interest" ColumnName="IC_Interest" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FarmRealProductionLive">
+            <EntityTypeMapping TypeName="LiveDBModel.FarmRealProductionLive">
+              <MappingFragment StoreEntitySet="FarmRealProductionLive">
+                <ScalarProperty Name="Farm_Record_ID" ColumnName="Farm_Record_ID" />
+                <ScalarProperty Name="Farming_Year" ColumnName="Farming_Year" />
+                <ScalarProperty Name="Output_of_Cereals" ColumnName="Output_of_Cereals" />
+                <ScalarProperty Name="Wheat" ColumnName="Wheat" />
+                <ScalarProperty Name="Barley" ColumnName="Barley" />
+                <ScalarProperty Name="Oats" ColumnName="Oats" />
+                <ScalarProperty Name="Output_of_Industrial_Crops" ColumnName="Output_of_Industrial_Crops" />
+                <ScalarProperty Name="Oilseed_Rape" ColumnName="Oilseed_Rape" />
+                <ScalarProperty Name="Protein_Crops" ColumnName="Protein_Crops" />
+                <ScalarProperty Name="Sugar_Beet" ColumnName="Sugar_Beet" />
+                <ScalarProperty Name="Output_of_Forage_Plants" ColumnName="Output_of_Forage_Plants" />
+                <ScalarProperty Name="Output_of_Vegetables_and_Horticultural" ColumnName="Output_of_Vegetables_and_Horticultural" />
+                <ScalarProperty Name="Fresh_Vegetables" ColumnName="Fresh_Vegetables" />
+                <ScalarProperty Name="Plants_and_Flowers" ColumnName="Plants_and_Flowers" />
+                <ScalarProperty Name="Output_of_Potatoes" ColumnName="Output_of_Potatoes" />
+                <ScalarProperty Name="Output_of_Fruit" ColumnName="Output_of_Fruit" />
+                <ScalarProperty Name="Output_of_Crop_Products" ColumnName="Output_of_Crop_Products" />
+                <ScalarProperty Name="Output_of_Livestock" ColumnName="Output_of_Livestock" />
+                <ScalarProperty Name="Primarily_for_meat" ColumnName="Primarily_for_meat" />
+                <ScalarProperty Name="Cattle" ColumnName="Cattle" />
+                <ScalarProperty Name="Pigs" ColumnName="Pigs" />
+                <ScalarProperty Name="Sheep" ColumnName="Sheep" />
+                <ScalarProperty Name="Poultry" ColumnName="Poultry" />
+                <ScalarProperty Name="Gross_Fixed_Captial_Formation" ColumnName="Gross_Fixed_Captial_Formation" />
+                <ScalarProperty Name="Cattle2" ColumnName="Cattle2" />
+                <ScalarProperty Name="Pigs2" ColumnName="Pigs2" />
+                <ScalarProperty Name="Sheep2" ColumnName="Sheep2" />
+                <ScalarProperty Name="Poultry2" ColumnName="Poultry2" />
+                <ScalarProperty Name="Output_of_Livestock_Products" ColumnName="Output_of_Livestock_Products" />
+                <ScalarProperty Name="Milk" ColumnName="Milk" />
+                <ScalarProperty Name="Eggs" ColumnName="Eggs" />
+                <ScalarProperty Name="Other_Agricultural_Activities" ColumnName="Other_Agricultural_Activities" />
+                <ScalarProperty Name="Inseperable_NonAgricultural_Activities" ColumnName="Inseperable_NonAgricultural_Activities" />
+                <ScalarProperty Name="Total_Subsidies_less_taxes" ColumnName="Total_Subsidies_less_taxes" />
+                <ScalarProperty Name="Total_Income" ColumnName="Total_Income" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

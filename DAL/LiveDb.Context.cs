@@ -25,6 +25,11 @@ namespace DAL
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<RainTableLive> RainTableLives { get; set; }
+        public virtual DbSet<RainTableLive> RainTableLive { get; set; }
+        public virtual DbSet<ExportMilsTableLive> ExportMilsTableLive { get; set; }
+        public virtual DbSet<FarmCurrentConsumptionLive> FarmCurrentConsumptionLive { get; set; }
+        public virtual DbSet<FarmCurrentProductionLive> FarmCurrentProductionLive { get; set; }
+        public virtual DbSet<FarmRealConsumptionLive> FarmRealConsumptionLive { get; set; }
+        public virtual DbSet<FarmRealProductionLive> FarmRealProductionLive { get; set; }
     }
 }

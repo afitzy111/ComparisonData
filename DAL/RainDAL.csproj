@@ -51,53 +51,66 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExportMilsTableLive.cs">
+      <DependentUpon>LiveDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FarmCurrentConsumptionLive.cs">
+      <DependentUpon>LiveDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FarmCurrentProductionLive.cs">
+      <DependentUpon>LiveDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FarmRealConsumptionLive.cs">
+      <DependentUpon>LiveDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FarmRealProductionLive.cs">
+      <DependentUpon>LiveDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LiveDb.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LiveDb.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LiveDb.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LiveDb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LiveDb.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LiveDb.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Rainfall.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Rainfall.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Rainfall.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Rainfall.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Rainfall.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Rainfall.edmx</DependentUpon>
-    </Compile>
     <Compile Include="RainTableLive.cs">
-      <DependentUpon>Rainfall.tt</DependentUpon>
+      <DependentUpon>LiveDb.tt</DependentUpon>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <EntityDeploy Include="Rainfall.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Rainfall.Designer.cs</LastGenOutput>
-    </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <None Include="packages.config" />
-    <None Include="Rainfall.edmx.diagram">
-      <DependentUpon>Rainfall.edmx</DependentUpon>
+    <EntityDeploy Include="LiveDb.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>LiveDb.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="LiveDb.edmx.diagram">
+      <DependentUpon>LiveDb.edmx</DependentUpon>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Rainfall.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Rainfall.edmx</DependentUpon>
-      <LastGenOutput>Rainfall.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Rainfall.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Rainfall.edmx</DependentUpon>
-      <LastGenOutput>Rainfall.cs</LastGenOutput>
-    </Content>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="LiveDb.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LiveDb.edmx</DependentUpon>
+      <LastGenOutput>LiveDb.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="LiveDb.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>LiveDb.edmx</DependentUpon>
+      <LastGenOutput>LiveDb.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

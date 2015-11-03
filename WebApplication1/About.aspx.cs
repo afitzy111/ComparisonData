@@ -22,32 +22,28 @@ namespace WebApplication1
      
 
         protected void btn_click(object sender, EventArgs e)
-        {
-            //string tb = TextBox1.Text;
-            //int asInt = Convert.ToInt32(tb);
-            //rr = rs.getRecord(asInt);
-            //Label1.Text = rr.ToString();
+        {           
             if (sender.Equals(btnRain))
             {
-                chtNBAChampionships.Series.Add("Rain");
-                chtNBAChampionships.Series["Rain"].ChartType = SeriesChartType.Line;
-                chtNBAChampionships.Series["Rain"].ChartArea = "MainChartArea";
+                Chart.Series.Add("Rain");
+                Chart.Series["Rain"].ChartType = SeriesChartType.Line;
+                Chart.Series["Rain"].ChartArea = "MainChartArea";
 
                 foreach (ServiceLayer.RainRecord rec in retrieveRecords())
                 {
-                    chtNBAChampionships.Series["Rain"]
+                    Chart.Series["Rain"]
                         .Points.AddXY(rec.yearRef, rec.rainFullYear);
                 }
             }
-            else
+            else if (sender.Equals(btnOutflow))
             {
-                chtNBAChampionships.Series.Add("Outflow");
-                chtNBAChampionships.Series["Outflow"].ChartType = SeriesChartType.Line;
-                chtNBAChampionships.Series["Outflow"].ChartArea = "MainChartArea";
+                Chart.Series.Add("Outflow");
+                Chart.Series["Outflow"].ChartType = SeriesChartType.Line;
+                Chart.Series["Outflow"].ChartArea = "MainChartArea";
 
                 foreach (ServiceLayer.RainRecord rec in retrieveRecords())
                 {
-                    chtNBAChampionships.Series["Outflow"]
+                    Chart.Series["Outflow"]
                         .Points.AddXY(rec.yearRef, rec.outflowFullYear);
                 }
             }
