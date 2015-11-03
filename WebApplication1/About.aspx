@@ -20,14 +20,17 @@
                    <asp:Button ID="btnOutflow" type="button" class="btn-default" runat="server" Text="Outflow data for every year" OnClick="btn_click" />
                </li>
            </ul>
-            <button type="button" class="btn btn-primary">Farming Data</button>
+            <button type="button" class="btn btn-primary">Farming</button>
            <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                <span class="caret"></span>
                <span class="sr-only">Toggle Dropdown</span>
            </button>
            <ul class="dropdown-menu">
-               <li></li>        
-               <li></li>
+               <li>
+                   <asp:Button ID="btnCattle" type="button" class="btn-default" runat="server" Text="Cattle data for every year" OnClick="btn_click" /></li>
+               <li>
+                   <asp:Button ID="btnPigs" type="button" class="btn-default" runat="server" Text="Pig data for every year" OnClick="btn_click" />
+               </li>
            </ul>
 
            <!--</div>
@@ -51,4 +54,5 @@
                </ChartAreas>
            </asp:Chart>
        </div>
+</div>
 </asp:Content>

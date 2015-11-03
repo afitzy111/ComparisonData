@@ -48,4 +48,30 @@ namespace ServiceLayer
             return allRecords;
         }
     }
+
+    public class ProductionCurrentService
+    {
+        //Declare the ref I will use
+        private DAL.LiveDBEntities _entities;
+
+        //Constructor
+        public ProductionCurrentService()
+        {
+            _entities = new DAL.LiveDBEntities();
+        }
+
+        public List<FarmProductionCurrentRecord> retrieveAllCurProd() 
+        {
+            List<FarmProductionCurrentRecord> allRecords = new List<FarmProductionCurrentRecord>();
+
+            foreach (DAL.FarmCurrentProductionLive cpl in _entities.FarmCurrentProductionLive)
+            {
+                FarmProductionCurrentRecord rr = new FarmProductionCurrentRecord(cpl);
+                allRecords.Add(rr);
+            }
+            return allRecords;
+        }
+
+        
+    }
 }

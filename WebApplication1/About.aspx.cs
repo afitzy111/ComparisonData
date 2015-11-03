@@ -12,6 +12,7 @@ namespace WebApplication1
     {
         ServiceLayer.RainService rs = new ServiceLayer.RainService();
         ServiceLayer.RainRecord rr = new ServiceLayer.RainRecord();
+        ServiceLayer.ProductionCurrentService pcr = new ServiceLayer.ProductionCurrentService();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -29,7 +30,7 @@ namespace WebApplication1
                 Chart.Series["Rain"].ChartType = SeriesChartType.Line;
                 Chart.Series["Rain"].ChartArea = "MainChartArea";
 
-                foreach (ServiceLayer.RainRecord rec in retrieveRecords())
+                foreach (ServiceLayer.RainRecord rec in retrieveRainRecords())
                 {
                     Chart.Series["Rain"]
                         .Points.AddXY(rec.yearRef, rec.rainFullYear);
@@ -41,19 +42,40 @@ namespace WebApplication1
                 Chart.Series["Outflow"].ChartType = SeriesChartType.Line;
                 Chart.Series["Outflow"].ChartArea = "MainChartArea";
 
-                foreach (ServiceLayer.RainRecord rec in retrieveRecords())
+                foreach (ServiceLayer.RainRecord rec in retrieveRainRecords())
                 {
                     Chart.Series["Outflow"]
                         .Points.AddXY(rec.yearRef, rec.outflowFullYear);
                 }
             }
+            else if (sender.Equals(btnCattle))
+            {
+                Chart.Series.Add("Cattle");
+                Chart.Series["Cattle"].ChartType = SeriesChartType.Line;
+                Chart.Series["Cattle"].ChartArea = "MainChartArea";
+
+                foreach (ServiceLayer.FarmProductionCurrentRecord rec in retrieveCurProdRecords())
+                {
+                    Chart.Series["Cattle"]
+                        .Points.AddXY(rec.farmingYear, rec.cattle);
+                }
+            }
         }
 
-        protected List<ServiceLayer.RainRecord> retrieveRecords()
+        protected List<ServiceLayer.RainRecord> retrieveRainRecords()
         {
             List<ServiceLayer.RainRecord> list = new List<ServiceLayer.RainRecord>();
 
             list = rs.RetrieveAllRainrecords();
+
+            return list;
+        }
+
+        protected List<ServiceLayer.FarmProductionCurrentRecord> retrieveCurProdRecords()
+        {
+            List<ServiceLayer.FarmProductionCurrentRecord> list = new List<ServiceLayer.FarmProductionCurrentRecord>();
+
+            list = pcr.retrieveAllCurProd();
 
             return list;
         }
