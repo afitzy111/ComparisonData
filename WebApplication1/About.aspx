@@ -39,19 +39,21 @@
                 </tr>
             </table>
         </div>-->
+           <br />    <br />
            <asp:Label ID="Label1" runat="server"></asp:Label>
-           <asp:Chart ID="Chart" runat="server">
+           <asp:Chart ID="Chart" runat="server" Height="310px" Width="613px">
                <Series>
-                   <asp:Series Name="Championships" YValueType="Int32" ChartType="Line" ChartArea="MainChartArea">
-                   </asp:Series>
+                   <asp:Series Name="Series1" ChartType="Line" Color="DarkRed" MarkerStyle="Diamond">
+                </asp:Series>
+                <asp:Series Name="Series2" ChartType="Line" Color="DarkBlue" MarkerStyle="Diamond"></asp:Series>
                </Series>
                <ChartAreas>
-                   <asp:ChartArea Name="MainChartArea">
+                   <asp:ChartArea Name="ChartArea1">
                    </asp:ChartArea>
                </ChartAreas>
            </asp:Chart>
        </div>
-
+           <br />    <br />    <br />    <br />    <br />    <br />
            <asp:GridView ID="GridView1" runat="server" Width="368px" Height="144px" BackColor="#E5E5E5" BorderStyle="None" Font-Names="Calibri">
     </asp:GridView>
         
@@ -64,4 +66,5 @@
     <br />
         <br />    
 </div>
+    </div>
 </asp:Content>

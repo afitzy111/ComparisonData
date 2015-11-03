@@ -18,7 +18,7 @@ namespace WebApplication1
         {
             if (!Page.IsPostBack)
             {
-
+                ChartFormat();
             }
         }
      
