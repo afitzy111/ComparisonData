@@ -20,7 +20,7 @@
                    <asp:Button ID="btnOutflow" type="button" class="btn-default" runat="server" Text="Outflow data for every year" OnClick="btn_click" />
                </li>
            </ul>
-            <button type="button" class="btn btn-primary">Farming</button>
+           <button type="button" class="btn btn-primary">Farming</button>
            <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                <span class="caret"></span>
                <span class="sr-only">Toggle Dropdown</span>
