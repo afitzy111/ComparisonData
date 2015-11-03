@@ -25,6 +25,6 @@ namespace DAL
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<RainTableLive> RainTableLive { get; set; }
+        public virtual DbSet<RainTableLive> RainTableLives { get; set; }
     }
 }

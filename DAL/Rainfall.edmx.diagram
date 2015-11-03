@@ -5,7 +5,11 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="28f54880b5ed47f68cfd647a3aa80087" Name="Diagram1">
-        <EntityTypeShape EntityType="LiveDBModel.RainTableLive" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LiveDBModel.RainTableLive" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="LiveDBModel.FarmCurrentConsumptionLive" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="LiveDBModel.FarmCurrentProductionLive" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="LiveDBModel.FarmRealConsumptionLive" Width="1.5" PointX="6.75" PointY="0.75" />
+        <EntityTypeShape EntityType="LiveDBModel.FarmRealProductionLive" Width="1.5" PointX="8.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
