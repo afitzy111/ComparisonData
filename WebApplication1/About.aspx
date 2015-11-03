@@ -51,4 +51,17 @@
                </ChartAreas>
            </asp:Chart>
        </div>
+
+           <asp:GridView ID="GridView1" runat="server" Width="368px" Height="144px" BackColor="#E5E5E5" BorderStyle="None" Font-Names="Calibri">
+    </asp:GridView>
+        
+       <div id="chart_div" style="width: 900px; height: 500px;">
+    <br />
+    <asp:Label ID="Label_Spearmans_Rank_Label" runat="server" Text="Spearman's Rank Correlation:   "></asp:Label>
+    <asp:TextBox ID="Label_Spearmans_Rank_Value" runat="server"></asp:TextBox>
+    
+    <br />
+    <br />
+        <br />    
+</div>
 </asp:Content>
