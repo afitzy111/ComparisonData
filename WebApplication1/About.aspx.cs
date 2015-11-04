@@ -14,39 +14,58 @@ namespace WebApplication1
     {
         ServiceLayer.RainService rs = new ServiceLayer.RainService();
         ServiceLayer.RainRecord rr = new ServiceLayer.RainRecord();
+        ServiceLayer.ProductionCurrentService pcs = new ServiceLayer.ProductionCurrentService();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
-                ChartFormat();
+                
             }
         }
      
 
         protected void btn_click(object sender, EventArgs e)
-        {           
+        {
+            //Series series1 = Chart.Series["Series1"];
+            //Series series2 = Chart.Series["Series2"];
+
+            //ChartFormat();
+
             if (sender.Equals(btnRain))
             {
-                Chart.Series.Add("Rain");
-                Chart.Series["Rain"].ChartType = SeriesChartType.Line;
-                Chart.Series["Rain"].ChartArea = "MainChartArea";
+                //Chart.Series.Add("Rain");
+                //Chart.Series["Rain"].ChartType = SeriesChartType.Line;
+                //Chart.Series["Rain"].ChartArea = "MainChartArea";                
 
-                foreach (ServiceLayer.RainRecord rec in retrieveRecords())
-                {
-                    Chart.Series["Rain"]
-                        .Points.AddXY(rec.yearRef, rec.rainFullYear);
-                }
+                //foreach (ServiceLayer.RainRecord rec in retrieveRecords())
+                //{
+                //    Chart.Series["Series1"]
+                //        .Points.AddXY(rec.yearRef, rec.rainFullYear);               
+                //}
+
+                //foreach (ServiceLayer.FarmProductionCurrentRecord rec in retrieveCurRecords())
+                //{              
+                //    Chart.Series["Series2"]
+                //        .Points.AddXY(rec.farmingYear, rec.cattle);
+                //}
+                Dset();
+
             }
             else if (sender.Equals(btnOutflow))
             {
-                Chart.Series.Add("Outflow");
-                Chart.Series["Outflow"].ChartType = SeriesChartType.Line;
-                Chart.Series["Outflow"].ChartArea = "MainChartArea";
+                //Chart.Series.Add("Outflow");
+                //Chart.Series["Outflow"].ChartType = SeriesChartType.Line;
+                //Chart.Series["Outflow"].ChartArea = "MainChartArea";
 
                 foreach (ServiceLayer.RainRecord rec in retrieveRecords())
                 {
-                    Chart.Series["Outflow"]
+                    Chart.Series["Series1"]
                         .Points.AddXY(rec.yearRef, rec.outflowFullYear);
+                }
+                foreach (ServiceLayer.FarmProductionCurrentRecord rec in retrieveCurRecords())
+                {
+                    Chart.Series["Series2"]
+                        .Points.AddXY(rec.farmingYear, rec.cattle);
                 }
             }
         }
@@ -60,10 +79,20 @@ namespace WebApplication1
             return list;
         }
 
+        protected List<ServiceLayer.FarmProductionCurrentRecord> retrieveCurRecords()
+        {
+            List<ServiceLayer.FarmProductionCurrentRecord> list = new List<ServiceLayer.FarmProductionCurrentRecord>();
+
+            list = pcs.retrieveAllCurProd();
+
+            return list;
+        }
+
 
         //Steve Changes
-        public void Update()
+        public void Dset()
         {
+            //ChartFormat();
             //Two series on one chart
             Series series1 = Chart.Series["Series1"];
             Series series2 = Chart.Series["Series2"];
@@ -81,32 +110,43 @@ namespace WebApplication1
             int[] randomInts2 = new int[20];
 
 
-            for (int pointIndex = 0; pointIndex < randomInts1.Length; pointIndex++)
+            //for (int pointIndex = 0; pointIndex < randomInts1.Length; pointIndex++)
+            //{
+            //    //create array of size 20 of random variables
+            //    randomInts1[pointIndex] = random.Next(45, 95);
+            //    randomInts2[pointIndex] = random.Next(5, 55);
+
+            //    //plot them
+            //    series1.Points.AddXY(pointIndex, randomInts1[pointIndex]);
+            //    series2.Points.AddXY(pointIndex, randomInts2[pointIndex]);
+
+            //    //assign totals for average
+            //    total1 += randomInts1[pointIndex];
+            //    total2 += randomInts2[pointIndex];
+
+            //    //check no nulls are taken for the growth rate formula
+            //    if ((pointIndex - 1 >= 0))
+            //    {
+            //        growthRate1 = (double)((randomInts1[pointIndex] - randomInts1[pointIndex - 1]) / (double)randomInts1[pointIndex - 1]);
+            //        growthRate2 = (double)((randomInts2[pointIndex] - randomInts2[pointIndex - 1]) / (double)randomInts2[pointIndex - 1]);
+
+            //    }
+
+            //    //total growth rate variables first
+            //    averageGrowthRate1 += growthRate1;
+            //    averageGrowthRate2 += growthRate2;
+
+            //}
+
+            foreach (ServiceLayer.RainRecord rec in retrieveRecords())
             {
-                //create array of size 20 of random variables
-                randomInts1[pointIndex] = random.Next(45, 95);
-                randomInts2[pointIndex] = random.Next(5, 55);
-
-                //plot them
-                series1.Points.AddXY(pointIndex, randomInts1[pointIndex]);
-                series2.Points.AddXY(pointIndex, randomInts2[pointIndex]);
-
-                //assign totals for average
-                total1 += randomInts1[pointIndex];
-                total2 += randomInts2[pointIndex];
-
-                //check no nulls are taken for the growth rate formula
-                if ((pointIndex - 1 >= 0))
-                {
-                    growthRate1 = (double)((randomInts1[pointIndex] - randomInts1[pointIndex - 1]) / (double)randomInts1[pointIndex - 1]);
-                    growthRate2 = (double)((randomInts2[pointIndex] - randomInts2[pointIndex - 1]) / (double)randomInts2[pointIndex - 1]);
-
-                }
-
-                //total growth rate variables first
-                averageGrowthRate1 += growthRate1;
-                averageGrowthRate2 += growthRate2;
-
+                Chart.Series["Series1"]
+                    .Points.AddXY(rec.yearRef, rec.rainFullYear);
+            }
+            foreach (ServiceLayer.FarmProductionCurrentRecord rec in retrieveCurRecords())
+            {
+                Chart.Series["Series2"]
+                    .Points.AddXY(rec.farmingYear, rec.cattle);
             }
 
             //get average and convert to percent
@@ -143,8 +183,6 @@ namespace WebApplication1
             //Spearman's Rank correlation for each random set of integers
             double spearmansRankValue = SpearmansCoeff(randomInts1, randomInts2);
             Label_Spearmans_Rank_Value.Text = Math.Round(spearmansRankValue, 2).ToString();
-
-
         }
 
         //Spearman's Rank methods
@@ -185,9 +223,7 @@ namespace WebApplication1
             Series series1 = Chart.Series["Series1"];
             Series series2 = Chart.Series["Series2"];
 
-            ChartArea chartArea1 = Chart.ChartAreas["ChartArea1"];
-
-            Update();
+            ChartArea chartArea1 = Chart.ChartAreas["ChartArea1"];           
 
             Chart.Legends.Add(new Legend("Legend2"));
             Chart.Titles.Add(new Title("String Build Comparison: Series1 & Series2 against the Year", Docking.Top, new Font("Arial", 14f, FontStyle.Bold), Color.Black));
@@ -230,9 +266,6 @@ namespace WebApplication1
                 chartArea1.AxisY2.LineWidth = 2;
                 chartArea1.AxisX.LineWidth = 2;
             }
-
         }
-
-
     }
 }

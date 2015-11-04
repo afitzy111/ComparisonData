@@ -8,16 +8,16 @@
        <h3>Please select an option below.</h3>
        <hr/>
        <div class="btn-group">
-           <button type="button" class="btn btn-primary">Rainfall Data</button>
+           <button type="button" class="btn btn-primary">Comparison Data</button>
            <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                <span class="caret"></span>
                <span class="sr-only">Toggle Dropdown</span>
            </button>
            <ul class="dropdown-menu">
                <li>
-                   <asp:Button ID="btnRain" type="button" class="btn-default" runat="server" Text="Rain data for every year" OnClick="btn_click" /></li>
+                   <asp:Button ID="btnRain" type="button" class="btn-default" runat="server" Text="Compare Rainfall to Cattle Production" OnClick="btn_click" /></li>
                <li>
-                   <asp:Button ID="btnOutflow" type="button" class="btn-default" runat="server" Text="Outflow data for every year" OnClick="btn_click" />
+                   <asp:Button ID="btnOutflow" type="button" class="btn-default" runat="server" Text="Compare Outflow to Cattle Production" OnClick="btn_click" />
                </li>
            </ul>
             <button type="button" class="btn btn-primary">Farming Data</button>

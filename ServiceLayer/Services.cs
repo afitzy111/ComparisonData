@@ -7,11 +7,11 @@ using DAL;
 
 namespace ServiceLayer
 {
-    public class RainService : IRainServices
+    public class RainService
     {
         //Declare the ref I will use
         private DAL.LiveDBEntities _entities;
-        
+
         //Constructor
         public RainService()
         {
@@ -21,29 +21,118 @@ namespace ServiceLayer
         public RainRecord getRecord(int year)
         {
             DAL.RainTableLive rain = (from cool in _entities.RainTableLive
-                                        where cool.Year_Ref == year
-                                        select cool).FirstOrDefault();
+                                      where cool.Year_Ref == year
+                                      select cool).FirstOrDefault();
 
-            RainRecord ret = new RainRecord(rain);
-            //ret.rainID = rain.Record_ID;
-            //ret.outflowFullYear = (int)rain.Outflow_Full_Year;
-            //ret.outflowSummer = (int)rain.Outflow_Summer;
-            //ret.outflowWinter = (int)rain.Outflow_Winter;
-            //ret.rainFullYear = (int)rain.Rain_Full_Year;
-            //ret.rainSummer = (int)rain.Rain_Summer;
-            //ret.rainWinter = (int)rain.Rain_Winter;
+            RainRecord rec = new RainRecord(rain);
 
-            return ret;
+            return rec;
         }
 
         public List<RainRecord> RetrieveAllRainrecords()
         {
             List<RainRecord> allRecords = new List<RainRecord>();
 
-            foreach (DAL.RainTableLive dbAddr in _entities.RainTableLive)
+            foreach (DAL.RainTableLive rr in _entities.RainTableLive)
             {
-                RainRecord rr = new RainRecord(dbAddr);
-                allRecords.Add(rr);
+                RainRecord rec = new RainRecord(rr);
+                allRecords.Add(rec);
+            }
+            return allRecords;
+        }
+    }
+
+    public class ProductionCurrentService
+    {
+        //Declare the ref I will use
+        private DAL.LiveDBEntities _entities;
+
+        //Constructor
+        public ProductionCurrentService()
+        {
+            _entities = new DAL.LiveDBEntities();
+        }
+
+        public List<FarmProductionCurrentRecord> retrieveAllCurProd()
+        {
+            List<FarmProductionCurrentRecord> allRecords = new List<FarmProductionCurrentRecord>();
+
+            foreach (DAL.FarmCurrentProductionLive pl in _entities.FarmCurrentProductionLive)
+            {
+                FarmProductionCurrentRecord rec = new FarmProductionCurrentRecord(pl);
+                allRecords.Add(rec);
+            }
+            return allRecords;
+        }
+    }
+
+    public class ProductionRealService
+    {
+        //Declare the ref I will use
+        private DAL.LiveDBEntities _entities;
+
+        //Constructor
+        public ProductionRealService()
+        {
+            _entities = new DAL.LiveDBEntities();
+        }
+
+        public List<FarmProductionRealRecord> retrieveAllRealProd()
+        {
+            List<FarmProductionRealRecord> allRecords = new List<FarmProductionRealRecord>();
+
+            foreach (DAL.FarmRealProductionLive pl in _entities.FarmRealProductionLive)
+            {
+                FarmProductionRealRecord rec = new FarmProductionRealRecord(pl);
+                allRecords.Add(rec);
+            }
+            return allRecords;
+        }
+    }
+
+    public class ConsumptionCurrentService
+    {
+        //Declare the ref I will use
+        private DAL.LiveDBEntities _entities;
+
+        //Constructor
+        public ConsumptionCurrentService()
+        {
+            _entities = new DAL.LiveDBEntities();
+        }
+
+        public List<FarmConsumptionCurrentRecord> retrieveAllRealProd()
+        {
+            List<FarmConsumptionCurrentRecord> allRecords = new List<FarmConsumptionCurrentRecord>();
+
+            foreach (DAL.FarmCurrentConsumptionLive pl in _entities.FarmCurrentConsumptionLive)
+            {
+                FarmConsumptionCurrentRecord rec = new FarmConsumptionCurrentRecord(pl);
+                allRecords.Add(rec);
+            }
+            return allRecords;
+        }
+    }
+
+    public class ConsumptionRealService
+    {
+        //Declare the ref I will use
+        private DAL.LiveDBEntities _entities;
+
+        //Constructor
+        public ConsumptionRealService()
+        {
+            _entities = new DAL.LiveDBEntities();
+        }
+
+        public List<FarmConsumptionRealRecord> retrieveAllRealProd()
+        {
+            List<FarmConsumptionRealRecord> allRecords = new List<FarmConsumptionRealRecord>();
+
+            foreach (DAL.FarmRealConsumptionLive pl in _entities.FarmRealConsumptionLive)
+            {
+                FarmConsumptionRealRecord rec = new FarmConsumptionRealRecord(pl);
+                allRecords.Add(rec);
             }
             return allRecords;
         }
