@@ -31,46 +31,47 @@ namespace WebApplication1
 
             //ChartFormat();
 
+            //List<ServiceLayer.RainRecord> rrList = retrieveRainRecords();
+            //List<ServiceLayer.FarmProductionCurrentRecord> curList = retrieveCurRecords();
+            List<int> rainInts = new List<int>();
+            List<int> farmInts = new List<int>();
+            List<int> l1YearInts = new List<int>();
+            List<int> l2YearInts = new List<int>();
+
             if (sender.Equals(btnRain))
-            {
-                //Chart.Series.Add("Rain");
-                //Chart.Series["Rain"].ChartType = SeriesChartType.Line;
-                //Chart.Series["Rain"].ChartArea = "MainChartArea";                
+            {                     
+                foreach (ServiceLayer.RainRecord rec in retrieveRainRecords())
+                {
+                    rainInts.Add(rec.rainFullYear);
+                    l1YearInts.Add(rec.yearRef);
+                }
 
-                //foreach (ServiceLayer.RainRecord rec in retrieveRecords())
-                //{
-                //    Chart.Series["Series1"]
-                //        .Points.AddXY(rec.yearRef, rec.rainFullYear);               
-                //}
-
-                //foreach (ServiceLayer.FarmProductionCurrentRecord rec in retrieveCurRecords())
-                //{              
-                //    Chart.Series["Series2"]
-                //        .Points.AddXY(rec.farmingYear, rec.cattle);
-                //}
-                Dset();
+                foreach (ServiceLayer.FarmProductionCurrentRecord rec in retrieveCurRecords())
+                {
+                    farmInts.Add(rec.cattle);
+                    l2YearInts.Add(rec.farmingYear);
+                }
+                Dset(rainInts, farmInts, l1YearInts, l2YearInts);
 
             }
             else if (sender.Equals(btnOutflow))
             {
-                //Chart.Series.Add("Outflow");
-                //Chart.Series["Outflow"].ChartType = SeriesChartType.Line;
-                //Chart.Series["Outflow"].ChartArea = "MainChartArea";
-
-                foreach (ServiceLayer.RainRecord rec in retrieveRecords())
+                foreach (ServiceLayer.RainRecord rec in retrieveRainRecords())
                 {
-                    Chart.Series["Series1"]
-                        .Points.AddXY(rec.yearRef, rec.outflowFullYear);
+                    rainInts.Add(rec.outflowFullYear);
+                    l1YearInts.Add(rec.yearRef);
                 }
+
                 foreach (ServiceLayer.FarmProductionCurrentRecord rec in retrieveCurRecords())
                 {
-                    Chart.Series["Series2"]
-                        .Points.AddXY(rec.farmingYear, rec.cattle);
+                    farmInts.Add(rec.cattle);
+                    l2YearInts.Add(rec.farmingYear);
                 }
+                Dset(rainInts, farmInts, l1YearInts, l2YearInts);
             }
         }
 
-        protected List<ServiceLayer.RainRecord> retrieveRecords()
+        protected List<ServiceLayer.RainRecord> retrieveRainRecords()
         {
             List<ServiceLayer.RainRecord> list = new List<ServiceLayer.RainRecord>();
 
@@ -88,9 +89,27 @@ namespace WebApplication1
             return list;
         }
 
+        public void RainSet(int i1, int i2)
+        {
+            //ChartFormat();
+            //Two series on one chart
+            Series series1 = Chart.Series["Series1"];
+            Series series2 = Chart.Series["Series2"];
+
+            //totals for getting average
+            double total1 = 0, total2 = 0;
+
+            //growth rate variables
+            double growthRate1 = 0, growthRate2 = 0;
+            double averageGrowthRate1 = 0, averageGrowthRate2 = 0;
+
+            //Randomly assigned arrays for plot points
+
+            int[] randomInts2 = new int[20];
+        }
 
         //Steve Changes
-        public void Dset()
+        public void Dset(List<int> l1, List<int> l2, List<int> l1Year, List<int> l2Year)
         {
             //ChartFormat();
             //Two series on one chart
@@ -106,8 +125,7 @@ namespace WebApplication1
 
             //Randomly assigned arrays for plot points
             Random random = new Random();
-            int[] randomInts1 = new int[20];
-            int[] randomInts2 = new int[20];
+
 
 
             //for (int pointIndex = 0; pointIndex < randomInts1.Length; pointIndex++)
@@ -137,25 +155,58 @@ namespace WebApplication1
             //    averageGrowthRate2 += growthRate2;
 
             //}
+            int[] list1 = l1.ToArray();
+            int[] list2 = l2.ToArray();
+            int[] curYear = l1Year.ToArray();
+            int[] curYear2 = l2Year.ToArray();
+            int yearIncrementer = -1;
 
-            foreach (ServiceLayer.RainRecord rec in retrieveRecords())
+
+            foreach (int plot in l1)
             {
+                yearIncrementer++;
                 Chart.Series["Series1"]
-                    .Points.AddXY(rec.yearRef, rec.rainFullYear);
+                    .Points.AddXY(curYear[yearIncrementer], list1[yearIncrementer]);
+
+                total1 += list1[yearIncrementer];
+
+                //check no nulls are taken for the growth rate formula
+                if ((yearIncrementer - 1 >= 0))
+                {
+                    growthRate1 = (double)((list1[yearIncrementer] - list1[yearIncrementer - 1]) / (double)list1[yearIncrementer - 1]);
+                }
+
+                //total growth rate variables first
+                averageGrowthRate1 += growthRate1;
             }
-            foreach (ServiceLayer.FarmProductionCurrentRecord rec in retrieveCurRecords())
+
+            yearIncrementer = -1;
+
+            foreach (int plot in l2)
             {
+                yearIncrementer++;
                 Chart.Series["Series2"]
-                    .Points.AddXY(rec.farmingYear, rec.cattle);
+                    .Points.AddXY(curYear2[yearIncrementer], list2[yearIncrementer]);
+
+                total2 += list2[yearIncrementer];
+
+                //check no nulls are taken for the growth rate formula
+                if ((yearIncrementer - 1 >= 0))
+                {
+                    growthRate2 = (double)((list2[yearIncrementer] - list2[yearIncrementer - 1]) / (double)list2[yearIncrementer - 1]);
+                }
+                averageGrowthRate2 += growthRate2;
+
             }
+
 
             //get average and convert to percent
-            averageGrowthRate1 = (averageGrowthRate1 / randomInts1.Length) * 100;
-            averageGrowthRate2 = (averageGrowthRate2 / randomInts2.Length) * 100;
+            averageGrowthRate1 = (averageGrowthRate1 / list1.Length) * 100;
+            averageGrowthRate2 = (averageGrowthRate2 / list2.Length) * 100;
 
             //Average values for each series
-            double seriesAverage1 = (double)total1 / 16;
-            double seriesAverage2 = (double)total2 / 16;
+            double seriesAverage1 = (double)total1 / list1.Length;
+            double seriesAverage2 = (double)total2 / list2.Length;
 
 
             //Create DataTable to insert all these values into Gridview
@@ -179,19 +230,28 @@ namespace WebApplication1
             GridView1.DataSource = dt;
             GridView1.DataBind();
 
-
             //Spearman's Rank correlation for each random set of integers
-            double spearmansRankValue = SpearmansCoeff(randomInts1, randomInts2);
+            double spearmansRankValue = SpearmansCoeff(list1, list2);
             Label_Spearmans_Rank_Value.Text = Math.Round(spearmansRankValue, 2).ToString();
         }
 
         //Spearman's Rank methods
         public double SpearmansCoeff(IEnumerable<int> current, IEnumerable<int> other)
         {
-            if (current.Count() != other.Count())
-                throw new ArgumentException("Both collections of data must contain an equal number of elements");
-
-            double[] ranksX = GetRanking(current);
+            double[] ranksX;
+            if (current.Count() > other.Count())
+            {
+                ranksX = GetRanking(current.Skip(current.Count() - other.Count()));
+            }
+            else if (current.Count() < other.Count())
+            {
+                ranksX = GetRanking(current.Skip(other.Count() - current.Count()));
+            }
+            else
+            {
+                ranksX = GetRanking(current);
+            }
+                     
             double[] ranksY = GetRanking(other);
 
             var diffPair = ranksX.Zip(ranksY, (x, y) => new { x, y });
