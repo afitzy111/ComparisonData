@@ -267,5 +267,6 @@ namespace WebApplication1
                 chartArea1.AxisX.LineWidth = 2;
             }
         }
+
     }
 }

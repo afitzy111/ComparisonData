@@ -31,6 +31,24 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.Button btnOutflow;
         
         /// <summary>
+        /// option1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button option1;
+        
+        /// <summary>
+        /// option2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button option2;
+        
+        /// <summary>
         /// Label1 control.
         /// </summary>
         /// <remarks>

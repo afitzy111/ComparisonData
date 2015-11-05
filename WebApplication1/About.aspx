@@ -8,43 +8,42 @@
    <div class="container-fluid">
        <h3>Please select an option below.</h3>
        <hr/>
-       <div class="btn-group">
+       <h3>Comparison data</h3>
+       <!--<div class="btn-group">
            <button type="button" class="btn btn-primary">Comparison Data</button>
            <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                <span class="caret"></span>
                <span class="sr-only">Toggle Dropdown</span>
            </button>
            <ul class="dropdown-menu">
-               <li>
+               <li>-->
                    <asp:Button ID="btnRain" type="button" class="btn-default" runat="server" Text="Compare Rainfall to Cattle Production" OnClick="btn_click" /></li>
-               <li>
+               <!--<li>-->
                    <asp:Button ID="btnOutflow" type="button" class="btn-default" runat="server" Text="Compare Outflow to Cattle Production" OnClick="btn_click" />
-               </li>
-           </ul>
-           </div>
-       <div class="btn-group">
-            <button type="button" class="btn btn-primary">Farming Data</button>
+              <!-- </li>-->
+          <!-- </ul>-->
+          <!-- </div>-->
+      <!-- <div class="btn-group">-->
+           <!-- <button type="button" class="btn btn-primary">Farming Data</button>
            <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                <span class="caret"></span>
                <span class="sr-only">Toggle Dropdown</span>
            </button>
-           <ul class="dropdown-menu">
-               <li>Option 1</li>        
-               <li>Option 2</li>
-           </ul>
-           </div>
+           <ul class="dropdown-menu">-->
+       <br />
+       <h3>Farming</h3>
+               <asp:Button ID ="option1" type ="button" class="btn-default" runat="server" Text="Option 1" />        
+                <asp:Button ID ="option2" type ="button" class="btn-default" runat="server" Text="Option 2" />
+           <!--</ul>-->
+           <!--</div>-->
 
-           <!--</div>
-            <table>
-                <tr>
-                    <td>
-                       
-                    </td>
-                </tr>
-            </table>
-        </div>-->
-           <br />    <br />
-           <asp:Label ID="Label1" runat="server"></asp:Label>
+           
+           <!--<div class="row">-->
+           <!--<asp:Label ID="Label1" runat="server"></asp:Label>-->
+       <!--</div>-->
+       <div class="row">
+           <br />    
+           
            <asp:Chart ID="Chart" runat="server" Height="310px" Width="613px">
                <Series>
                    <asp:Series Name="Series1" ChartType="Line" Color="DarkRed" MarkerStyle="Diamond">
@@ -56,10 +55,11 @@
                    </asp:ChartArea>
                </ChartAreas>
            </asp:Chart>
-       </div>
-           <br />    <br />    <br />    <br />    <br />    <br />
+       </div><br />
+       <div class="row">
            <asp:GridView ID="GridView1" runat="server" Width="368px" Height="144px" BackColor="#E5E5E5" BorderStyle="None" Font-Names="Calibri">
     </asp:GridView>
+       </div>
         
        <div id="chart_div" style="width: 900px; height: 500px;">
     <br />
@@ -70,5 +70,6 @@
     <br />
         <br />    
 </div>
+    
     </div>
 </asp:Content>
