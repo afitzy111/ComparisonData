@@ -13,13 +13,13 @@ namespace WebApplication1 {
     public partial class About {
         
         /// <summary>
-        /// btnRain control.
+        /// btnRainFall control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRain;
+        protected global::System.Web.UI.WebControls.Button btnRainFall;
         
         /// <summary>
         /// btnOutflow control.
@@ -31,31 +31,76 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.Button btnOutflow;
         
         /// <summary>
-        /// option1 control.
+        /// btnTotalProduction control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button option1;
+        protected global::System.Web.UI.WebControls.Button btnTotalProduction;
         
         /// <summary>
-        /// option2 control.
+        /// cattle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button option2;
+        protected global::System.Web.UI.WebControls.Button cattle;
         
         /// <summary>
-        /// Label1 control.
+        /// btnTotalExport control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Button btnTotalExport;
+        
+        /// <summary>
+        /// btnExporyNAmerica control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnExporyNAmerica;
+        
+        /// <summary>
+        /// btnRainCattle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnRainCattle;
+        
+        /// <summary>
+        /// btnOutflowCttle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnOutflowCttle;
+        
+        /// <summary>
+        /// btnTotalFarmingTotalExports control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnTotalFarmingTotalExports;
+        
+        /// <summary>
+        /// btnSummerRainfallCereal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSummerRainfallCereal;
         
         /// <summary>
         /// Chart control.

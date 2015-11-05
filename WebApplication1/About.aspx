@@ -8,43 +8,27 @@
    <div class="container-fluid">
        <h3>Please select an option below.</h3>
        <hr/>
-       <h3>Comparison data</h3>
-       <!--<div class="btn-group">
-           <button type="button" class="btn btn-primary">Comparison Data</button>
-           <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-               <span class="caret"></span>
-               <span class="sr-only">Toggle Dropdown</span>
-           </button>
-           <ul class="dropdown-menu">
-               <li>-->
-                   <asp:Button ID="btnRain" type="button" class="btn-default" runat="server" Text="Compare Rainfall to Cattle Production" OnClick="btn_click" /></li>
-               <!--<li>-->
-                   <asp:Button ID="btnOutflow" type="button" class="btn-default" runat="server" Text="Compare Outflow to Cattle Production" OnClick="btn_click" />
-              <!-- </li>-->
-          <!-- </ul>-->
-          <!-- </div>-->
-      <!-- <div class="btn-group">-->
-           <!-- <button type="button" class="btn btn-primary">Farming Data</button>
-           <button type="button" class="btn btn-warning dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-               <span class="caret"></span>
-               <span class="sr-only">Toggle Dropdown</span>
-           </button>
-           <ul class="dropdown-menu">-->
+       <h3>Rainfall Data</h3>
+            <asp:Button ID ="btnRainFall" type ="button" class="btn-default" runat="server" Text="Total Rainfall" />        
+            <asp:Button ID ="btnOutflow" type ="button" class="btn-default" runat="server" Text="Total Outflow" />
+        <h3>Farming</h3>
+                <asp:Button ID ="btnTotalProduction" type ="button" class="btn-default" runat="server" Text="Total Production value" />        
+                <asp:Button ID ="cattle" type ="button" class="btn-default" runat="server" Text="Total Cattle Production value" />
+        <h3>Agricultural Exports</h3>
+                <asp:Button ID ="btnTotalExport" type ="button" class="btn-default" runat="server" Text="Total Agricultural Export value" />        
+                <asp:Button ID ="btnExporyNAmerica" type ="button" class="btn-default" runat="server" Text="Total Agricultural Export to N America" />
+       <h3>Comparison Options</h3>
+                   <asp:Button ID="btnRainCattle" type="button" class="btn-default" runat="server" Text="Rainfall/Cattle Production" OnClick="btn_click" />
+                   <asp:Button ID="btnOutflowCttle" type="button" class="btn-default" runat="server" Text="Outflow/Cattle Production" OnClick="btn_click" />
+                   <asp:Button ID="btnTotalFarmingTotalExports" type="button" class="btn-default" runat="server" Text="Total Farming Production/Total Agricultural Exports" OnClick="btn_click" />
+                   <asp:Button ID="btnSummerRainfallCereal" type="button" class="btn-default" runat="server" Text="Summer Rainfall Total/Cereal Production" OnClick="btn_click" />
+          
        <br />
-       <h3>Farming</h3>
-               <asp:Button ID ="option1" type ="button" class="btn-default" runat="server" Text="Option 1" />        
-                <asp:Button ID ="option2" type ="button" class="btn-default" runat="server" Text="Option 2" />
-           <!--</ul>-->
-           <!--</div>-->
-
-           
-           <!--<div class="row">-->
-           <!--<asp:Label ID="Label1" runat="server"></asp:Label>-->
-       <!--</div>-->
+      
+          
        <div class="row">
-           <br />    
-           
-           <asp:Chart ID="Chart" runat="server" Height="310px" Width="613px">
+           <br />          
+           <asp:Chart ID="Chart" runat="server" Height="390px" Width="906px">
                <Series>
                    <asp:Series Name="Series1" ChartType="Line" Color="DarkRed" MarkerStyle="Diamond">
                    </asp:Series>
@@ -57,8 +41,9 @@
            </asp:Chart>
        </div><br />
        <div class="row">
-           <asp:GridView ID="GridView1" runat="server" Width="368px" Height="144px" BackColor="#E5E5E5" BorderStyle="None" Font-Names="Calibri">
-    </asp:GridView>
+           <asp:GridView ID="GridView1" runat="server" Width="902px" Height="178px" GridLines="Both" BackColor="#DADADA" BorderStyle="None" Font-Names="Calibri" ForeColor="Black">
+           </asp:GridView>
+
        </div>
         
        <div id="chart_div" style="width: 900px; height: 500px;">

@@ -19,7 +19,6 @@ namespace WebApplication1
         {
             if (!Page.IsPostBack)
             {
-                
             }
         }
      
@@ -111,7 +110,7 @@ namespace WebApplication1
         //Steve Changes
         public void Dset(List<int> l1, List<int> l2, List<int> l1Year, List<int> l2Year)
         {
-            //ChartFormat();
+            ChartFormat();
             //Two series on one chart
             Series series1 = Chart.Series["Series1"];
             Series series2 = Chart.Series["Series2"];
@@ -123,38 +122,7 @@ namespace WebApplication1
             double growthRate1 = 0, growthRate2 = 0;
             double averageGrowthRate1 = 0, averageGrowthRate2 = 0;
 
-            //Randomly assigned arrays for plot points
-            Random random = new Random();
-
-
-
-            //for (int pointIndex = 0; pointIndex < randomInts1.Length; pointIndex++)
-            //{
-            //    //create array of size 20 of random variables
-            //    randomInts1[pointIndex] = random.Next(45, 95);
-            //    randomInts2[pointIndex] = random.Next(5, 55);
-
-            //    //plot them
-            //    series1.Points.AddXY(pointIndex, randomInts1[pointIndex]);
-            //    series2.Points.AddXY(pointIndex, randomInts2[pointIndex]);
-
-            //    //assign totals for average
-            //    total1 += randomInts1[pointIndex];
-            //    total2 += randomInts2[pointIndex];
-
-            //    //check no nulls are taken for the growth rate formula
-            //    if ((pointIndex - 1 >= 0))
-            //    {
-            //        growthRate1 = (double)((randomInts1[pointIndex] - randomInts1[pointIndex - 1]) / (double)randomInts1[pointIndex - 1]);
-            //        growthRate2 = (double)((randomInts2[pointIndex] - randomInts2[pointIndex - 1]) / (double)randomInts2[pointIndex - 1]);
-
-            //    }
-
-            //    //total growth rate variables first
-            //    averageGrowthRate1 += growthRate1;
-            //    averageGrowthRate2 += growthRate2;
-
-            //}
+            
             int[] list1 = l1.ToArray();
             int[] list2 = l2.ToArray();
             int[] curYear = l1Year.ToArray();
@@ -209,30 +177,73 @@ namespace WebApplication1
             double seriesAverage2 = (double)total2 / list2.Length;
 
 
+
+            //Spearman's Rank correlation for each random set of integers
+            double spearmansRankValue = SpearmansCoeff(list1, list2);
+            Label_Spearmans_Rank_Value.Text = Math.Round(spearmansRankValue, 2).ToString();
+
+            //Calculates the Degrees of Freedom needed to test for significance
+            //in the final version, this value will be the number of points - 2
+            //i.e. DoF = n - 2;
+            double DoF = DegreesOfFreedom(list1, list2);
+
+            string isSignificant;
+
+            if (SignificanceTest(DoF, spearmansRankValue))
+            {
+                isSignificant = "There is at least a 95% chance that the relationship between these two datasets are significant";
+            }
+            else
+            {
+                isSignificant = "It is not certain that the relationship between these two datasets are statistically significant";
+            }
+
             //Create DataTable to insert all these values into Gridview
             DataTable dt = new DataTable();
             dt.Clear();
             dt.Columns.Add("Series Name");
-            dt.Columns.Add("Average");
-            dt.Columns.Add("Growth");
+            dt.Columns.Add("Sample Size");
+            dt.Columns.Add("Overall Average");
+            dt.Columns.Add("Growth Rate");
+            dt.Columns.Add("Spearman's Rank Correlation and Significance");
             DataRow row1 = dt.NewRow();
             row1["Series Name"] = "Rainfall Full Year";
-            row1["Average"] = seriesAverage1.ToString();
-            row1["Growth"] = Math.Round(averageGrowthRate1, 2).ToString() + "%";
+            row1["Sample Size"] = list1.Length.ToString();
+            row1["Overall Average"] = Math.Round(seriesAverage1).ToString();
+            row1["Growth Rate"] = Math.Round(averageGrowthRate1, 2).ToString() + "%";
+            row1["Spearman's Rank Correlation and Significance"] = "Correlation: " + Math.Round(spearmansRankValue, 2).ToString() + ".  " + CorrelationTest(spearmansRankValue);
             dt.Rows.Add(row1);
             DataRow row2 = dt.NewRow();
             row2["Series Name"] = "Outflow Full Year";
-            row2["Average"] = seriesAverage2.ToString();
-            row2["Growth"] = Math.Round(averageGrowthRate2, 2).ToString() + "%";
+            row2["Sample Size"] = list2.Length.ToString();
+            row2["Overall Average"] = Math.Round(seriesAverage2).ToString();
+            row2["Growth Rate"] = Math.Round(averageGrowthRate2, 2).ToString() + "%";
+            row2["Spearman's Rank Correlation and Significance"] = "Significance: " + isSignificant;
             dt.Rows.Add(row2);
 
             //Bind these values to the gridview
             GridView1.DataSource = dt;
             GridView1.DataBind();
 
-            //Spearman's Rank correlation for each random set of integers
-            double spearmansRankValue = SpearmansCoeff(list1, list2);
-            Label_Spearmans_Rank_Value.Text = Math.Round(spearmansRankValue, 2).ToString();
+        }
+
+
+        public double DegreesOfFreedom(IEnumerable<int> current, IEnumerable<int> other)
+        {
+            double[] ranksX;
+            if (current.Count() > other.Count())
+            {
+                ranksX = GetRanking(current.Skip(current.Count() - other.Count()));
+            }
+            else if (current.Count() < other.Count())
+            {
+                ranksX = GetRanking(current.Skip(other.Count() - current.Count()));
+            }
+            else
+            {
+                ranksX = GetRanking(current);
+            }
+            return ranksX.Length - 2;
         }
 
         //Spearman's Rank methods
@@ -277,6 +288,60 @@ namespace WebApplication1
             return rankings;
         }
 
+        //Spearman's Rank significance test using the (DoF) degrees of freedom 
+        public bool SignificanceTest(double DoF, double spRV)
+        {
+            bool isSignificant = false;
+            if (spRV < 0)
+            {
+                spRV *= -1;
+            }
+            if (DoF == 4 && spRV >= 1.0) { isSignificant = true; }
+            if (DoF == 5 && spRV >= 0.9) { isSignificant = true; }
+            if (DoF == 6 && spRV >= 0.829) { isSignificant = true; }
+            if (DoF == 7 && spRV >= 0.714) { isSignificant = true; }
+            if (DoF == 8 && spRV >= 0.643) { isSignificant = true; }
+            if (DoF == 9 && spRV >= 0.6) { isSignificant = true; }
+            if (DoF == 10 && spRV >= 0.564) { isSignificant = true; }
+            if (DoF == 11 && spRV >= 0.523) { isSignificant = true; }
+            if (DoF == 12 && spRV >= 0.497) { isSignificant = true; }
+            if (DoF == 13 && spRV >= 0.475) { isSignificant = true; }
+            if (DoF == 14 && spRV >= 0.457) { isSignificant = true; }
+            if (DoF == 15 && spRV >= 0.441) { isSignificant = true; }
+            if (DoF == 16 && spRV >= 0.425) { isSignificant = true; }
+            if (DoF == 17 && spRV >= 0.410) { isSignificant = true; }
+            if (DoF == 18 && spRV >= 0.399) { isSignificant = true; }
+            if (DoF == 19 && spRV >= 0.388) { isSignificant = true; }
+            if (DoF == 20 && spRV >= 0.377) { isSignificant = true; }
+            return isSignificant;
+        }
+
+        public string CorrelationTest(double spRV)
+        {
+            string isCorrelated;
+            if (spRV < 0.4 && spRV > 0)
+            {
+                isCorrelated = "There is a slight positive correlation between these two datasets";
+            }
+            else if (spRV >= 0.4 && spRV <= 1)
+            {
+                isCorrelated = "There is a strong positive correlation between these two datasets";
+            }
+            else if (spRV < -0.4 && spRV >= -1)
+            {
+                isCorrelated = "There is a strong negative correlation between these two datasets";
+            }
+            else if (spRV >= -0.4 && spRV < 0)
+            {
+                isCorrelated = "There is a slight negative correlation between these two datasets";
+            }
+            else
+            {
+                isCorrelated = "There is a no correlation between these two datasets";
+            }
+            return isCorrelated;
+        }
+
         //Chart Formatting
         public void ChartFormat()
         {
@@ -286,7 +351,7 @@ namespace WebApplication1
             ChartArea chartArea1 = Chart.ChartAreas["ChartArea1"];           
 
             Chart.Legends.Add(new Legend("Legend2"));
-            Chart.Titles.Add(new Title("String Build Comparison: Series1 & Series2 against the Year", Docking.Top, new Font("Arial", 14f, FontStyle.Bold), Color.Black));
+            //Chart.Titles.Add(new Title("String Build Comparison: Series1 & Series2 against the Year", Docking.Top, new Font("Arial", 14f, FontStyle.Bold), Color.Black));
             chartArea1.AxisX.Interval = 3;
 
             series1.BorderWidth = 2;
@@ -294,7 +359,7 @@ namespace WebApplication1
             Chart.ChartAreas["ChartArea1"].AxisY.TitleFont = new Font("Arial", 12, FontStyle.Bold);
 
             chartArea1.AxisX.Title = "Year";
-            chartArea1.AxisY.Title = "Rainfall per Year";
+            //chartArea1.AxisY.Title = "Rainfall per Year";
 
             series1.ToolTip = "Data Point Rainfall per Year: #VALY{0}\n" +
                                        "Data Point Year: #VALX{0}\n";
@@ -316,7 +381,7 @@ namespace WebApplication1
             {
                 //Multiple Axis
                 Chart.ChartAreas["ChartArea1"].AxisY2.TitleFont = new Font("Arial", 12, FontStyle.Bold);
-                chartArea1.AxisY2.Title = "Outflow per Year";
+                //chartArea1.AxisY2.Title = "Outflow per Year";
                 series2.BorderWidth = 2;
                 series2.ToolTip = "Data Point" + "Outflow per Year" + ": #VALY{0}\n" + "Data Point" + "Year" + ": #VALX{0}\n";
                 chartArea1.AxisY2.Enabled = AxisEnabled.True;
