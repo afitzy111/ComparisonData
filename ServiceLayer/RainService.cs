@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using DAL;
 namespace ServiceLayer
 {
+    //Entity classes that correspond with the database objects
+
     public class RainRecord
     {
         public int rainID { get; set; }
@@ -111,6 +113,7 @@ namespace ServiceLayer
             this.otherAgri = (int)pl.Other_Agricultural_Activities;
             this.inseperableNonAgri = (int)pl.Inseperable_NonAgricultural_Activities;
             this.subsidies = (int)pl.Total_Subsidies_less_taxes;
+            this.totalIncome = (int)pl.Total_Income;
         }
     }
 

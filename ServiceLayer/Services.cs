@@ -7,6 +7,7 @@ using DAL;
 
 namespace ServiceLayer
 {
+    //Services used here basically just create a list of relevent record objects from the DAL
     public class RainService
     {
         //Declare the ref I will use
@@ -132,6 +133,30 @@ namespace ServiceLayer
             foreach (DAL.FarmRealConsumptionLive pl in _entities.FarmRealConsumptionLive)
             {
                 FarmConsumptionRealRecord rec = new FarmConsumptionRealRecord(pl);
+                allRecords.Add(rec);
+            }
+            return allRecords;
+        }
+    }
+
+    public class ExportService
+    {
+        //Declare the ref I will use
+        private DAL.LiveDBEntities _entities;
+
+        //Constructor
+        public ExportService()
+        {
+            _entities = new DAL.LiveDBEntities();
+        }
+
+        public List<ExportMilsRecord> retrieveAllExports()
+        {
+            List<ExportMilsRecord> allRecords = new List<ExportMilsRecord>();
+
+            foreach (DAL.ExportMilsTableLive pl in _entities.ExportMilsTableLive)
+            {
+                ExportMilsRecord rec = new ExportMilsRecord(pl);
                 allRecords.Add(rec);
             }
             return allRecords;
